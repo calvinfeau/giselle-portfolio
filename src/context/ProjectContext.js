@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState } from 'react';
 import SectionTemplate1 from "../components/SectionTemplate1";
 import SectionTemplate2 from "../components/SectionTemplate2";
 import SectionTemplate3 from "../components/SectionTemplate3";
@@ -8,7 +8,7 @@ export const ProjectContext = createContext();
 
 const ProjectContextProvider = (props) => {
     const [p1, setP1] = useState({
-        num: 1,
+        isInCarousel: true,
         overview: {
             title: "P1 overview title",
             description: "P1 overview description"
@@ -43,7 +43,7 @@ const ProjectContextProvider = (props) => {
         }
     })
     const [p2, setP2] = useState({
-        num: 2,
+        isInCarousel: false,
         overview: {
             title: "P2 overview title",
             description: "P2 overview description"
@@ -72,7 +72,7 @@ const ProjectContextProvider = (props) => {
         }
     });
     const [p3, setP3] = useState({
-        num: 3,
+        isInCarousel: true,
         overview: {
             title: "P3 overview title",
             description: "P3 overview description"
@@ -87,7 +87,7 @@ const ProjectContextProvider = (props) => {
         images: {
             main: "",
             section1: <SectionTemplate1 
-            image1={"IMAGE1 URL REACHED"}
+            image1={"https://drive.google.com/file/d/1cekTNR3DxeSvxwsPOqHbJMqVx5jPpxHT/view?usp=sharing"}
             image2={""}
             />,
             section2: <SectionTemplate3 
@@ -101,7 +101,7 @@ const ProjectContextProvider = (props) => {
         }
     });
     const [p4, setP4] = useState({
-        num: 4,
+        isInCarousel: true,
         overview: {
             title: "P4 overview title",
             description: "P4 overview description"
@@ -130,7 +130,7 @@ const ProjectContextProvider = (props) => {
         }
     });
     const [p5, setP5] = useState({
-        num: 5,
+        isInCarousel: false,
         overview: {
             title: "P5 overview title",
             description: "P5 overview description"
@@ -160,7 +160,8 @@ const ProjectContextProvider = (props) => {
     });
 
     const [ pagination, setPagination ] = useState(0);
-    const [ projects, setProjects ] = useState([p1, p2, p3])
+    const [ projects, setProjects ] = useState([p1, p2, p3]);
+    const [ carousel, setCarousel ] = useState([]);
 
     return (<ProjectContext.Provider value={{projects, pagination, setPagination}}>{props.children}</ProjectContext.Provider>)
 }

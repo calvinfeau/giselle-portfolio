@@ -46,7 +46,7 @@ const About = () => {
                 <Text>
                     <a href="mailto:hello@pechecreme.com" target="_top">hello@pechecreme.com</a>
                     <br /><a href="https://www.linkedin.com/in/gisellehndz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    {/* <br /><a href="" target="_blank" rel="noopener noreferrer">Instagram</a>            */}
+                    {/* <br /><a href="" target="_blank" rel="noopener noreferrer">Instagram</a> */}
                 </Text>
             </Section>
         </div>
