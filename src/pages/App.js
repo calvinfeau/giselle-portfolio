@@ -4,9 +4,9 @@ import ProjectContextProvider from "../context/ProjectContext";
 import NavBar from '../components/NavBar';
 import TextCarousel from '../components/TextCarousel';
 import { Route } from 'react-router-dom';
-import ProjectDetails from './ProjectDetails';
-import About from './About';
-import Work from './Work';
+import ProjectDetails from './ProjectDetailsPage';
+import About from './AboutPage';
+import Work from './WorkMenuPage';
 
 const App = () => {
   return (
