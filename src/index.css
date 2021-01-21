@@ -1,10 +1,10 @@
 @font-face {
-  font-family:                     "GT America Trial";
-  src:                             url("/assets/fonts/gt-america-light.woff") format('woff');
+  /* font-family:                     "GT America Trial";
+  src:                             url("/assets/fonts/gt-america-light.woff") format('woff'); */
 }
 @font-face {
-  font-family:                     "Circular";
-  src:                             url("/assets/fonts/CircularStd-Bold.woff") format('woff');
+  /* font-family:                     "Circular";
+  src:                             url("/assets/fonts/CircularStd-Bold.woff") format('woff'); */
 }
 
 body {
@@ -70,7 +70,7 @@ a, a:hover {
   align-items:                      center;
 }
 .font-circular {
-  font-family:                      "Circular";
+  /* font-family:                      "Circular"; */
 }
 /* background color works - if needed, add a height or padding to display it */
 .b-color-1 {

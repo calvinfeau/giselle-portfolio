@@ -3,6 +3,7 @@ import SectionTemplate1 from "../components/SectionTemplate1";
 import SectionTemplate2 from "../components/SectionTemplate2";
 import SectionTemplate3 from "../components/SectionTemplate3";
 import SectionTemplate4 from "../components/SectionTemplate4";
+import {db, storage} from '../firebase/config';
 
 export const ProjectContext = createContext();
 
@@ -161,9 +162,26 @@ const ProjectContextProvider = (props) => {
 
     const [ pagination, setPagination ] = useState(0);
     const [ projects, setProjects ] = useState([p1, p2, p3]);
-    const [ carousel, setCarousel ] = useState([]);
+    const [ slideShow, setSlideShow ] = useState([]);
 
-    return (<ProjectContext.Provider value={{projects, pagination, setPagination}}>{props.children}</ProjectContext.Provider>)
-}
+    const getProjects = () => {
+    }
+    
+    const getSlideShow = () => {
+        db.collection('slideshow').get().then((slides) => {
+            let slidesToAdd = [];
+            slides.forEach(slide =>  slidesToAdd.push(slide.data()));
+            setSlideShow(slidesToAdd);
+            console.log("slidesToAdd: ", slidesToAdd);
+        });
+        console.log("slideShow: ", slideShow);
+    }
+
+    return (
+    <ProjectContext.Provider value={{ slideShow, getProjects, getSlideShow, projects, pagination, setPagination }} >
+        {props.children}
+    </ProjectContext.Provider>
+    );
+};
 
 export default ProjectContextProvider;
