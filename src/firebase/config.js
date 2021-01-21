@@ -1,10 +1,9 @@
+import app from "firebase/app";
+import "firebase/firestore";
+import "firebase/storage";
 require('dotenv').config();
-const firebase = require("firebase");
-// Required for side-effects
-require("firebase/firestore");
 
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-var firebaseConfig = {
+const firebaseConfig = {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
     projectId: process.env.PROJECT_ID,
@@ -14,8 +13,8 @@ var firebaseConfig = {
     measurementId: process.env.MEASUREMENT_ID
 };
 
-firebase.initializeApp(firebaseConfig);
-var db = firebase.firestore();
+app.initializeApp(firebaseConfig);
+const db = app.firestore();
+const storage = app.storage();
 
-
-export default db;
+export { db, storage }; 
