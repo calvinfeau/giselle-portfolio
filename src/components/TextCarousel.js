@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-import { Link } from "react-router-dom";
 import styled from 'styled-components';
 import {ProjectContext} from '../context/ProjectContext';
 
@@ -14,15 +13,13 @@ font-size:                              24px;
 `;
 
 const TextOverview = () => {
-    const {projects, pagination} = useContext(ProjectContext);
+    const {slideShow, pagination} = useContext(ProjectContext);
     return ( 
         <Wrapper className="width flex space-between align-center">
             <div>
-                <Link to={`/projects/${pagination}`}>
-                    {projects[pagination].overview.title}
-                    <br></br>
-                    {projects[pagination].overview.description}
-                </Link>
+                {slideShow.projectName}
+                <br></br>
+                {slideShow.title}
             </div>
             <Page>{(pagination + 1) + ' / ' + 5}</Page>
         </Wrapper>

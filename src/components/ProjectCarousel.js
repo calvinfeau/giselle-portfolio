@@ -52,14 +52,14 @@ width:                          auto;
 `;
 
 const ProjectOverview = () => {
-    const {projects, slideShow} = useContext(ProjectContext);
+    const { slideShow } = useContext(ProjectContext);
 
     return (
         <Wrapper>
             <Carousel defaultWait={100000}>
-                {projects.map((project, index) => (
+                {slideShow.map((slide, index) => (
                     <Slide className="flex align-center justify-center" key={index} right>
-                        <Img src={"https://firebasestorage.googleapis.com/v0/b/giselle-portfolio.appspot.com/o/SlideShow%2FGiselle_Hernandez_SS_Someware_1_L.jpg?alt=media&token=9cc25141-45c4-4f92-95c4-92710b2b468b"} alt={`project ${project.num}`}/>
+                        <Img src={`${slide.image}`} alt={`${slide.projectID}`}/>
                         {/* <Img src={window.location.origin + project.images.main} alt={`project ${project.num}`}/> */}
                     </Slide> 
                 ))}

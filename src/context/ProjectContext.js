@@ -160,25 +160,28 @@ const ProjectContextProvider = (props) => {
         }
     });
 
-    const [ pagination, setPagination ] = useState(0);
     const [ projects, setProjects ] = useState([p1, p2, p3]);
     const [ slideShow, setSlideShow ] = useState([]);
+    const [ pagination, setPagination ] = useState(0);
 
     const getProjects = () => {
-    }
+        db.collection('projects').get().then(project => {
+            let projectsToAdd = [];
+            project.forEach(project => projectsToAdd.push(project.data()));
+            setProjects(projectsToAdd);
+        });
+    };
     
     const getSlideShow = () => {
-        db.collection('slideshow').get().then((slides) => {
+        db.collection('slideshow').get().then(slides => {
             let slidesToAdd = [];
             slides.forEach(slide =>  slidesToAdd.push(slide.data()));
             setSlideShow(slidesToAdd);
-            console.log("slidesToAdd: ", slidesToAdd);
         });
-        console.log("slideShow: ", slideShow);
-    }
+    };
 
     return (
-    <ProjectContext.Provider value={{ slideShow, getProjects, getSlideShow, projects, pagination, setPagination }} >
+    <ProjectContext.Provider value={{ projects, slideShow, getProjects, getSlideShow, pagination, setPagination }} >
         {props.children}
     </ProjectContext.Provider>
     );
