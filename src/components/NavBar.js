@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import { Link } from "react-router-dom";
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Wrapper = styled.div`
 z-index:                        100;
@@ -22,7 +22,7 @@ const NavBar = () => {
                 <Link to="/about">About</Link>
             </Menu>
         </Wrapper>
-     );
-}
+    );
+};
  
 export default NavBar;

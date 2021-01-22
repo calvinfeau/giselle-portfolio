@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react';
-import makeCarousel from 'react-reveal/makeCarousel';
-import Slide from 'react-reveal/Slide';
-import styled, { css } from 'styled-components';
-import {ProjectContext} from '../context/ProjectContext';
+import React, { useContext, useEffect } from "react";
+import makeCarousel from "react-reveal/makeCarousel";
+import Slide from "react-reveal/Slide";
+import styled, { css } from "styled-components";
+import { ProjectContext } from "../context/ProjectContext";
 
 /* https://www.react-reveal.com/tutorials/carousel/ */
 const Container = styled.div`
@@ -18,23 +18,23 @@ max-width:                      600px;
 z-index:                        100;
 user-select:                    none;
 ${props => props.right ? css`left: 90%;` : css`left: 0%;`}
-${props => props.side === 'left' ? css`cursor: w-resize; margin-left: 10vw;` : css`cursor: e-resize; margin-right: 10vw;`}
+${props => props.side === "left" ? css`cursor: w-resize; margin-left: 10vw;` : css`cursor: e-resize; margin-right: 10vw;`}
 `;
 
 const CarouselUI = ({ position, handleClick, children }) => {
-    const {setPagination} = useContext(ProjectContext);
+    const { setPagination } = useContext(ProjectContext);
 
-    useEffect(() => {setPagination(position)})
+    useEffect(() => { setPagination(position) })
 
     return (
         <Container>
-            {children}
+            { children }
             <Arrows className="flex">
-                <Arrow side={'left'} onClick={handleClick} data-position={position - 1} />
-                <Arrow side={'right'} right onClick={handleClick} data-position={position + 1} />
+                <Arrow side={ "left" } onClick={ handleClick } data-position={ position - 1 } />
+                <Arrow side={ "right" } right onClick={ handleClick } data-position={ position + 1 } />
             </Arrows>
         </Container>
-    )
+    );
 };
 const Carousel = makeCarousel(CarouselUI);
 /* -------------------------------------------------- */
@@ -57,15 +57,14 @@ const ProjectOverview = () => {
     return (
         <Wrapper>
             <Carousel defaultWait={100000}>
-                {slideShow.map((slide, index) => (
-                    <Slide className="flex align-center justify-center" key={index} right>
-                        <Img src={`${slide.image}`} alt={`${slide.projectID}`}/>
-                        {/* <Img src={window.location.origin + project.images.main} alt={`project ${project.num}`}/> */}
+                { slideShow.map((slide, index) => (
+                    <Slide className="flex align-center justify-center" key={ index } right>
+                        <Img src={ `${ slide.image }` } alt={ `${ slide.projectID }` }/>
                     </Slide> 
                 ))}
             </Carousel>
         </Wrapper>
-     );
-}
+    );
+};
     
 export default ProjectOverview;

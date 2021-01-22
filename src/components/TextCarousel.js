@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import {ProjectContext} from '../context/ProjectContext';
+import React, { useContext } from "react";
+import styled from "styled-components";
+import { ProjectContext } from "../context/ProjectContext";
 
 const Wrapper = styled.div`
 z-index:                                100;
@@ -13,17 +13,17 @@ font-size:                              24px;
 `;
 
 const TextOverview = () => {
-    const {slideShow, pagination} = useContext(ProjectContext);
+    const { slideShow, pagination } = useContext(ProjectContext);
     return ( 
         <Wrapper className="width flex space-between align-center">
             <div>
-                {slideShow.projectName}
+                { slideShow.projectName }
                 <br></br>
-                {slideShow.title}
+                { slideShow.title }
             </div>
-            <Page>{(pagination + 1) + ' / ' + 5}</Page>
+            <Page>{ (pagination + 1) + " / " + slideShow.length() }</Page>
         </Wrapper>
      );
-}
- 
+};
+
 export default TextOverview;

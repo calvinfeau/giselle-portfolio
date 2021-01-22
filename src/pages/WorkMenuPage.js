@@ -1,7 +1,7 @@
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import styled, { css } from 'styled-components';
-import {ProjectContext} from '../context/ProjectContext';
+import styled, { css } from "styled-components";
+import { ProjectContext } from "../context/ProjectContext";
 
 const Wrapper = styled.div`
 display:                        grid;
@@ -28,20 +28,19 @@ const Title = styled.div`
 font-size:                      36px;
 `;
 
-const Work = () => {
-    const {projects} = useContext(ProjectContext);
+const WorkPage = () => {
+    const { projects } = useContext(ProjectContext);
     return ( 
         <Wrapper className="width margin-top">
-            {projects.map((project, index) => (
+            { projects.map((project, index) => (
                 <ProjectSection to={`/projects/${index}`} key={index} index={`${index}`} className="flex flex-column">
-                    <Img src={window.location.origin + project.images.main}></Img>
-                    <Title className="font-circular">{project.overview.title}</Title>
-                    <div>{project.overview.description}</div>
+                    <Img src={ window.location.origin + project.images.main }></Img>
+                    <Title className="font-circular">{ project.overview.title }</Title>
+                    <div>{ project.overview.description }</div>
                 </ProjectSection>
-            ))
-            }
+            ))}
         </Wrapper>
      );
-}
+};
  
-export default Work;
+export default WorkPage;
