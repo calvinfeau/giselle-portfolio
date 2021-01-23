@@ -1,18 +1,19 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import ProjectCarousel from "../components/ProjectCarousel";
 import TextCarousel from "../components/TextCarousel";
+import Loading from "../components/Loading";
+import { ProjectContext } from "../context/ProjectContext";
 
-const CarouselPage = () => {
-    const { slideShow, getSlideShow } = useContext(ProjectContext);
+const CarouselPage = () => {  
+    const { slidesLoading } = useContext(ProjectContext);
 
-    useEffect(() => getSlideShow(), [slideShow]);
-  
-    return (
-        <div>
+    return slidesLoading ? 
+        <Loading /> 
+        : 
+        <> 
             <ProjectCarousel />
-            <TextCarousel />
-        </div>
-    );
+            <TextCarousel /> 
+        </>
 };
 
 export default CarouselPage;

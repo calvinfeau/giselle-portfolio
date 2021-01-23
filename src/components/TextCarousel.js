@@ -14,14 +14,15 @@ font-size:                              24px;
 
 const TextOverview = () => {
     const { slideShow, pagination } = useContext(ProjectContext);
+
     return ( 
         <Wrapper className="width flex space-between align-center">
             <div>
-                { slideShow.projectName }
+                { slideShow[pagination].projectName }
                 <br></br>
-                { slideShow.title }
+                { slideShow[pagination].title }
             </div>
-            <Page>{ (pagination + 1) + " / " + slideShow.length() }</Page>
+            <Page>{ (pagination + 1) + " / " + slideShow.length }</Page>
         </Wrapper>
      );
 };

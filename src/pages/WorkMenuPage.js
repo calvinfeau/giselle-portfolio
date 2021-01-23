@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
+import Loading from "../components/Loading";
 import { ProjectContext } from "../context/ProjectContext";
 
 const Wrapper = styled.div`
@@ -29,8 +30,11 @@ font-size:                      36px;
 `;
 
 const WorkPage = () => {
-    const { projects } = useContext(ProjectContext);
-    return ( 
+    const { projectsLoading, projects } = useContext(ProjectContext);
+    
+    return projectsLoading ? 
+        <Loading />
+        :
         <Wrapper className="width margin-top">
             { projects.map((project, index) => (
                 <ProjectSection to={`/projects/${index}`} key={index} index={`${index}`} className="flex flex-column">
@@ -40,7 +44,6 @@ const WorkPage = () => {
                 </ProjectSection>
             ))}
         </Wrapper>
-     );
 };
  
 export default WorkPage;

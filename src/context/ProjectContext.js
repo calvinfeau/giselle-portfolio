@@ -3,46 +3,46 @@ import ImageTemplate1 from "../components/ImageTemplate1";
 import ImageTemplate2 from "../components/ImageTemplate2";
 import ImageTemplate3 from "../components/ImageTemplate3";
 import ImageTemplate4 from "../components/ImageTemplate4";
-import { db } from "../firebase/config";
+import { db } from "../firebase/Config";
 
 export const ProjectContext = createContext();
 
 const ProjectContextProvider = (props) => {
-    const [p1, setP1] = useState({
-        isInCarousel: true,
-        overview: {
-            title: "P1 overview title",
-            description: "P1 overview description"
-        },
-        details: {
-            title: "Lorem ipsum dolor sit amet, consectetur.",
-            subtitle1: "Hendrerit",
-            subtext1: "Subtext1",
-            subtitle2: "Vestibulum",
-            subtext2: "Subtext2",
-            subtitle3: "Consequat",
-            subtext3: "Subtext3",
-            description: `Tips to write this paragraph: Incorporate a description, rationale, services, & collateral. Ecommerce redesign, Nunc ac hendrerit nisl. Sed finibus non nunc nec posuere. Ut tristique nunc tellus, id ornare leo ornare egestas. Donec rhoncus aliquam pellentesque. Donec et nulla id turpis gravida ultricies. Integer non consectetur erat. Ut ac ex ac orci condimentum tristique. Vivamus sollicitudin elementum elit, vel blandit est.`,
-        },
-        images: {
-            main: "/assets/project1/main1.png",
-            section1: <ImageTemplate1 
-            image1={"/assets/project1/main1.png"}
-            />,
-            section2: <ImageTemplate2 
-            image1={"/assets/project1/test-1.jpg"}
-            image2={"/assets/project1/test-2.jpg"}
-            />,
-            section3: <ImageTemplate3 
-            image1={"/assets/project1/test-1.jpg"}
-            image2={"/assets/project1/test-2.jpg"}
-            />,
-            section4: <ImageTemplate4 
-            image1={"/assets/project1/test-1.jpg"}
-            image2={"/assets/project1/test-2.jpg"}
-            />
-        }
-    });
+    // const [p1, setP1] = useState({
+    //     isInCarousel: true,
+    //     overview: {
+    //         title: "P1 overview title",
+    //         description: "P1 overview description"
+    //     },
+    //     details: {
+    //         title: "Lorem ipsum dolor sit amet, consectetur.",
+    //         subtitle1: "Hendrerit",
+    //         subtext1: "Subtext1",
+    //         subtitle2: "Vestibulum",
+    //         subtext2: "Subtext2",
+    //         subtitle3: "Consequat",
+    //         subtext3: "Subtext3",
+    //         description: `Tips to write this paragraph: Incorporate a description, rationale, services, & collateral. Ecommerce redesign, Nunc ac hendrerit nisl. Sed finibus non nunc nec posuere. Ut tristique nunc tellus, id ornare leo ornare egestas. Donec rhoncus aliquam pellentesque. Donec et nulla id turpis gravida ultricies. Integer non consectetur erat. Ut ac ex ac orci condimentum tristique. Vivamus sollicitudin elementum elit, vel blandit est.`,
+    //     },
+    //     images: {
+    //         main: "/assets/project1/main1.png",
+    //         section1: <ImageTemplate1 
+    //         image1={"/assets/project1/main1.png"}
+    //         />,
+    //         section2: <ImageTemplate2 
+    //         image1={"/assets/project1/test-1.jpg"}
+    //         image2={"/assets/project1/test-2.jpg"}
+    //         />,
+    //         section3: <ImageTemplate3 
+    //         image1={"/assets/project1/test-1.jpg"}
+    //         image2={"/assets/project1/test-2.jpg"}
+    //         />,
+    //         section4: <ImageTemplate4 
+    //         image1={"/assets/project1/test-1.jpg"}
+    //         image2={"/assets/project1/test-2.jpg"}
+    //         />
+    //     }
+    // });
     // const [p2, setP2] = useState({
     //     isInCarousel: false,
     //     overview: {
@@ -160,28 +160,34 @@ const ProjectContextProvider = (props) => {
     //     }
     // });
 
+    const [ slidesLoading, setSlidesLoading ] = useState(true);
+    const [ projectsLoading, setProjectsLoading ] = useState(true);
     const [ projects, setProjects ] = useState([]);
     const [ slideShow, setSlideShow ] = useState([]);
     const [ pagination, setPagination ] = useState(0);
 
     const getProjects = () => {
+        console.log("getProjects hit")
         db.collection("projects").get().then(project => {
             let projectsToAdd = [];
             project.forEach(project => projectsToAdd.push(project.data()));
             setProjects(projectsToAdd);
+            setProjectsLoading(false);
         });
     };
     
     const getSlideShow = () => {
+        console.log("getSlideShow hit")
         db.collection("slideshow").get().then(slides => {
             let slidesToAdd = [];
             slides.forEach(slide =>  slidesToAdd.push(slide.data()));
             setSlideShow(slidesToAdd);
+            setSlidesLoading(false);
         });
     };
 
     return (
-        <ProjectContext.Provider value={{ projects, slideShow, getProjects, getSlideShow, pagination, setPagination }} >
+        <ProjectContext.Provider value={{ slidesLoading, setSlidesLoading, projectsLoading, setProjectsLoading, projects, getProjects, slideShow, getSlideShow, pagination, setPagination }} >
             {props.children}
         </ProjectContext.Provider>
     );
