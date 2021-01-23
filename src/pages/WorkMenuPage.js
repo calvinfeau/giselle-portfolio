@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import Loading from "../components/Loading";
 import ProjectDetails from "../components/ProjectDetails";
 import ProjectMenu from "../components/ProjectMenu";
@@ -34,13 +33,13 @@ font-size:                      36px;
 `;
 
 const WorkPage = () => {
-    const { projectsLoading, projects, hoverProject, selectedProject } = useContext(ProjectContext);
+    const { projectsLoading, isProjectSelected } = useContext(ProjectContext);
 
     if (projectsLoading) {
         return <Loading />
     };
     
-    return selectedProject ? <ProjectDetails /> : <ProjectMenu />
+    return isProjectSelected ? <ProjectDetails /> : <ProjectMenu />
         
         // <Wrapper className="width margin-top">
         //     {projects.map((project, index) => (

@@ -165,8 +165,9 @@ const ProjectContextProvider = (props) => {
     const [ projectsLoading, setProjectsLoading ] = useState(true);
     const [ projects, setProjects ] = useState([]);
     const [ slidesPagination, setSlidesPagination ] = useState(0);
-    const [ selectedProject, setSelectedProject ] = useState(false);
-    const [ hoverProject, setHoverProject ] = useState("");
+    const [ isProjectSelected, setIsProjectSelected ] = useState(false);
+    const [ selectedProject, setSelectedProject ] = useState({});
+    const [ hoveredProject, setHoveredProject ] = useState(0)
 
     const getProjects = () => {
         console.log("getProjects hit")
@@ -188,20 +189,37 @@ const ProjectContextProvider = (props) => {
         });
     };
 
+    const handleMenuHover = (hoverType, projectIndex) => {
+        hoverType === "enter" ? setHoveredProject(projectIndex) : setHoveredProject(0);
+    };
+    const handleSelectedProject = (project) => {
+        setSelectedProject(project);
+        setIsProjectSelected(true);
+    };
+    const handleUnselectedProject = () => {
+        setIsProjectSelected(false);
+        setSelectedProject({});
+    };
+
     return (
         <ProjectContext.Provider value={{ 
+            // states
             slidesLoading, 
-            setSlidesLoading, 
-            projectsLoading, 
-            setProjectsLoading, 
-            projects, 
-            getProjects, 
-            slideShow, 
+            projectsLoading,
+            projects,
+            slideShow,
+            slidesPagination,
+            isProjectSelected,
+            selectedProject,
+            hoveredProject,
+
+            // functions
+            getProjects,
             getSlideShow,
-            slidesPagination, 
             setSlidesPagination,
-            selectedProject, 
-            hoverProject
+            handleMenuHover,
+            handleSelectedProject,
+            handleUnselectedProject
             }} >
             {props.children}
         </ProjectContext.Provider>
