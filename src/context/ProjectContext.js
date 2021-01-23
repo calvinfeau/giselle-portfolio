@@ -1,8 +1,8 @@
 import React, { createContext, useState } from "react";
-import ImageTemplate1 from "../components/ImageTemplate1";
-import ImageTemplate2 from "../components/ImageTemplate2";
-import ImageTemplate3 from "../components/ImageTemplate3";
-import ImageTemplate4 from "../components/ImageTemplate4";
+// import ImageTemplate1 from "../components/ImageTemplate1";
+// import ImageTemplate2 from "../components/ImageTemplate2";
+// import ImageTemplate3 from "../components/ImageTemplate3";
+// import ImageTemplate4 from "../components/ImageTemplate4";
 import { db } from "../firebase/Config";
 
 export const ProjectContext = createContext();
@@ -165,7 +165,8 @@ const ProjectContextProvider = (props) => {
     const [ projectsLoading, setProjectsLoading ] = useState(true);
     const [ projects, setProjects ] = useState([]);
     const [ slidesPagination, setSlidesPagination ] = useState(0);
-    const [ selectedProject, setSelectedProject ] = useState("")
+    const [ selectedProject, setSelectedProject ] = useState(false);
+    const [ hoverProject, setHoverProject ] = useState("");
 
     const getProjects = () => {
         console.log("getProjects hit")
@@ -188,7 +189,20 @@ const ProjectContextProvider = (props) => {
     };
 
     return (
-        <ProjectContext.Provider value={{ slidesLoading, setSlidesLoading, projectsLoading, setProjectsLoading, projects, getProjects, slideShow, getSlideShow, slidesPagination, setSlidesPagination, selectedProject }} >
+        <ProjectContext.Provider value={{ 
+            slidesLoading, 
+            setSlidesLoading, 
+            projectsLoading, 
+            setProjectsLoading, 
+            projects, 
+            getProjects, 
+            slideShow, 
+            getSlideShow,
+            slidesPagination, 
+            setSlidesPagination,
+            selectedProject, 
+            hoverProject
+            }} >
             {props.children}
         </ProjectContext.Provider>
     );
