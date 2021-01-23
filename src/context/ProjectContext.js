@@ -161,10 +161,11 @@ const ProjectContextProvider = (props) => {
     // });
 
     const [ slidesLoading, setSlidesLoading ] = useState(true);
+    const [ slideShow, setSlideShow ] = useState([]);
     const [ projectsLoading, setProjectsLoading ] = useState(true);
     const [ projects, setProjects ] = useState([]);
-    const [ slideShow, setSlideShow ] = useState([]);
-    const [ pagination, setPagination ] = useState(0);
+    const [ slidesPagination, setSlidesPagination ] = useState(0);
+    const [ selectedProject, setSelectedProject ] = useState("")
 
     const getProjects = () => {
         console.log("getProjects hit")
@@ -187,7 +188,7 @@ const ProjectContextProvider = (props) => {
     };
 
     return (
-        <ProjectContext.Provider value={{ slidesLoading, setSlidesLoading, projectsLoading, setProjectsLoading, projects, getProjects, slideShow, getSlideShow, pagination, setPagination }} >
+        <ProjectContext.Provider value={{ slidesLoading, setSlidesLoading, projectsLoading, setProjectsLoading, projects, getProjects, slideShow, getSlideShow, slidesPagination, setSlidesPagination, selectedProject }} >
             {props.children}
         </ProjectContext.Provider>
     );

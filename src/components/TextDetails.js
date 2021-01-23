@@ -18,26 +18,29 @@ font-size:                          1em;
 margin-top:                         10px;
 `;
 
-const TextDetails = (props) => {
+const TextDetails = ({ project }) => {
     return ( 
         <div className="flex space-around s-margin">
             <Titles>
                 <Subtitle className="flex flex-column">
-                    <Text1>{ props.subtitle1 }</Text1>
-                    <Text2>{ props.subtext1 }</Text2>
+                    <Text1>Role</Text1>
+                    <Text2>{ project.role }</Text2>
                 </Subtitle>
+                {project.agency ? 
+                    <Subtitle className="flex flex-column">
+                        <Text1>Agency</Text1>
+                        <Text2>{ project.agency }</Text2>
+                    </Subtitle>
+                    : ''
+                }
                 <Subtitle className="flex flex-column">
-                    <Text1>{ props.subtitle2 }</Text1>
-                    <Text2>{ props.subtext2 }</Text2>
-                </Subtitle>
-                <Subtitle className="flex flex-column">
-                    <Text1>{ props.subtitle3 }</Text1>
-                    <Text2>{ props.subtext3 }</Text2>
+                    <Text1>Year</Text1>
+                    <Text2>{ project.year }</Text2>
                 </Subtitle>
             </Titles>
             <Description>
                 <Text1>
-                    { props.description }
+                    { project.description }
                 </Text1>
             </Description>
         </div>

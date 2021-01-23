@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Route } from "react-router-dom";
 import CarouselPage from "./pages/CarouselPage";
-import ProjectDetailsPage from "./pages/ProjectDetailsPage";
+// import ProjectDetailsPage from "./pages/ProjectDetailsPage";
 import AboutPage from "./pages/AboutPage";
 import WorkPage from "./pages/WorkMenuPage";
 import NavBar from "./components/NavBar";
@@ -20,7 +20,7 @@ const App = () => {
       <NavBar />
       <Route exact path="/" render={() => <CarouselPage />} />
       <Route exact path="/projects" render={() => <WorkPage />} />
-      <Route exact path="/projects/:project" render={() => <ProjectDetailsPage />} />
+      {/* <Route exact path="/projects/:project" render={() => <ProjectDetailsPage />} /> */}
       <Route exact path="/about" render={() => <AboutPage />} />
     </div>
   );
