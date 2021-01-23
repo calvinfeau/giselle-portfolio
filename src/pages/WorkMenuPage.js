@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 import Loading from "../components/Loading";
+import ProjectDetails from "../components/ProjectDetails";
 import { ProjectContext } from "../context/ProjectContext";
 
 const Wrapper = styled.div`
@@ -31,16 +32,21 @@ font-size:                      36px;
 
 const WorkPage = () => {
     const { projectsLoading, projects } = useContext(ProjectContext);
+
+    if (projectsLoading) {
+        return <Loading />
+
+    }
     
-    return projectsLoading ? 
-        <Loading />
+    return selectedProject ? 
+        <ProjectDetails />
         :
         <Wrapper className="width margin-top">
-            { projects.map((project, index) => (
-                <ProjectSection to={`/projects/${index}`} key={index} index={`${index}`} className="flex flex-column">
-                    <Img src={ window.location.origin + project.images.main }></Img>
-                    <Title className="font-circular">{ project.overview.title }</Title>
-                    <div>{ project.overview.description }</div>
+            {projects.map((project, index) => (
+                <ProjectSection to={ `/projects/${project.title.trim()}` } key={ index } index={ `${index}` } className="flex flex-column">
+                    <Img src={ `${project.images.main}` } alt={ `${project.title} image` } />
+                    <Title className="font-circular">{ project.title }</Title>
+                    <div>{ project.tags }</div>
                 </ProjectSection>
             ))}
         </Wrapper>

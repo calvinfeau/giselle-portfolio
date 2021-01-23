@@ -13,27 +13,21 @@ letter-spacing:                         5px;
 
 const ProjectDetails = () => {
     const { projects } = useContext(ProjectContext);
-    const { project } = useParams();
-    const currProject = projects[project];
+    const { projectName } = useParams();
+    const currProject = projects.find(project => project.title.trim() === projectName);
+    console.log("projectName: ", projectName);
+    console.log(currProject);
 
     return ( 
         <div className="width">
             <Title className="font-circular flex align-center">
-                { currProject.details.title }
+                { currProject.title }
             </Title>
-            { currProject.images.section1 }
-            <TextDetails 
-                subtitle1={ currProject.details.subtitle1 }
-                subtext1={ currProject.details.subtext1 }
-                subtitle2={ currProject.details.subtitle2 }
-                subtext2={ currProject.details.subtext2 }
-                subtext3={ currProject.details.subtext3 }
-                subtitle3={ currProject.details.subtitle3 }
-                description={ currProject.details.description }
-            />
-            { currProject.images.section2 }
+            {/* { currProject.images.section1 } */}
+            <TextDetails project={ currProject }/>
+            {/* { currProject.images.section2 }
             { currProject.images.section3 }
-            { currProject.images.section4 }
+            { currProject.images.section4 } */}
         </div>
      );
 };
