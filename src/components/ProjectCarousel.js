@@ -22,9 +22,9 @@ ${props => props.side === "left" ? css`cursor: w-resize; margin-left: 10vw;` : c
 `;
 
 const CarouselUI = ({ position, handleClick, children }) => {
-    const { setPagination } = useContext(ProjectContext);
+    const { setSlidesPagination } = useContext(ProjectContext);
 
-    useEffect(() => { setPagination(position) })
+    useEffect(() => { setSlidesPagination(position) })
 
     return (
         <Container>
