@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Section = styled.div`
 font-size:         18px;
@@ -16,7 +16,7 @@ border-top:       1px solid black;
 padding:          50px 0;
 `;
 
-const About = () => {
+const AboutPage = () => {
     return ( 
         <div className="width margin-top flex flex-column">
             <Section className="flex space-between">
@@ -32,25 +32,33 @@ const About = () => {
                 <Title>Services</Title>
                 <Text>
                     Branding & Identity
-                    <br />Website Design & Development
-                    <br />Packaging Design
-                    <br />Art Direction
-                    <br />Lifestyle & Product Photography
-                    <br />Editorial & Publication Design
-                    <br />Lookbook Design
-                    <br />Signage
+                    <br />
+                    Website Design & Development
+                    <br />
+                    Packaging Design
+                    <br />
+                    Art Direction
+                    <br />
+                    Lifestyle & Product Photography
+                    <br />
+                    Editorial & Publication Design
+                    <br />
+                    Lookbook Design
+                    <br />
+                    Signage
                 </Text>
             </Section>
             <Section className="flex space-between">
                 <Title>Contact</Title>
                 <Text>
                     <a href="mailto:hello@pechecreme.com" target="_top">hello@pechecreme.com</a>
-                    <br /><a href="https://www.linkedin.com/in/gisellehndz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    <br />
+                    <a href="https://www.linkedin.com/in/gisellehndz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     {/* <br /><a href="" target="_blank" rel="noopener noreferrer">Instagram</a> */}
                 </Text>
             </Section>
         </div>
-     );
-}
+    );
+};
  
-export default About;
+export default AboutPage;

@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Img1 = styled.img`
 height:                                 auto;
@@ -17,10 +17,10 @@ max-width:                              35%;
 const SectionTemplate4 = (props) => {
     return ( 
         <div className="flex space-between s-margin s-height">
-            <Img1 src={window.location.origin + props.image1}></Img1>
-            <Img2 src={window.location.origin + props.image2}></Img2>
+            <Img1 src={ window.location.origin + props.image1 }></Img1>
+            <Img2 src={ window.location.origin + props.image2 }></Img2>
         </div>
-     );
-}
+    );
+};
  
 export default SectionTemplate4;
