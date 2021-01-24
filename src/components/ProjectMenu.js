@@ -10,9 +10,9 @@ const ProjectMenu = () => {
             <div>
                 {projects.map((project, index) => 
                     <div 
-                    onMouseEnter={() => handleMenuHover("enter", index)}
-                    // onMouseLeave={() => handleMenuHover("leave")}
+                    onMouseEnter={() => handleMenuHover(index)}
                     onClick={() => handleSelectedProject(project)}
+                    key={index}
                     >
                         {project.title}
                         <br />

@@ -5,11 +5,14 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import {BrowserRouter as Router} from "react-router-dom";
 import ProjectContextProvider from "./context/ProjectContext";
+import LayoutContextProvider from "./context/LayoutContext";
 
 ReactDOM.render(
     <Router>
         <ProjectContextProvider>
-            <App />
+            <LayoutContextProvider>
+                <App />
+            </LayoutContextProvider>
         </ProjectContextProvider>
     </Router>, 
     document.getElementById("root")

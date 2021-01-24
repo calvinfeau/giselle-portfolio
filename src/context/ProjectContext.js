@@ -25,22 +25,7 @@ const ProjectContextProvider = (props) => {
     //         description: `Tips to write this paragraph: Incorporate a description, rationale, services, & collateral. Ecommerce redesign, Nunc ac hendrerit nisl. Sed finibus non nunc nec posuere. Ut tristique nunc tellus, id ornare leo ornare egestas. Donec rhoncus aliquam pellentesque. Donec et nulla id turpis gravida ultricies. Integer non consectetur erat. Ut ac ex ac orci condimentum tristique. Vivamus sollicitudin elementum elit, vel blandit est.`,
     //     },
     //     images: {
-    //         main: "/assets/project1/main1.png",
-    //         section1: <ImageTemplate1 
-    //         image1={"/assets/project1/main1.png"}
-    //         />,
-    //         section2: <ImageTemplate2 
-    //         image1={"/assets/project1/test-1.jpg"}
-    //         image2={"/assets/project1/test-2.jpg"}
-    //         />,
-    //         section3: <ImageTemplate3 
-    //         image1={"/assets/project1/test-1.jpg"}
-    //         image2={"/assets/project1/test-2.jpg"}
-    //         />,
-    //         section4: <ImageTemplate4 
-    //         image1={"/assets/project1/test-1.jpg"}
-    //         image2={"/assets/project1/test-2.jpg"}
-    //         />
+    //         main: "/assets/project1/main1.png"
     //     }
     // });
     // const [p2, setP2] = useState({
@@ -57,19 +42,7 @@ const ProjectContextProvider = (props) => {
     //         description: "P2 details description"
     //     },
     //     images: {
-    //         main: "/assets/project2/main2.jpg",
-    //         section1: <ImageTemplate1 
-    //         image1={"IMAGE1 URL REACHED"}
-    //         image2={""}
-    //         />,
-    //         section2: <ImageTemplate3 
-    //         image1={"IMAGE1 URL REACHED"}
-    //         image2={""}
-    //         />,
-    //         section3: <ImageTemplate2 
-    //         image1={"IMAGE1 URL REACHED"}
-    //         image2={""}
-    //         />
+    //         main: "/assets/project2/main2.jpg"
     //     }
     // });
     // const [p3, setP3] = useState({
@@ -86,19 +59,7 @@ const ProjectContextProvider = (props) => {
     //         description: "P3 details description"
     //     },
     //     images: {
-    //         main: "",
-    //         section1: <ImageTemplate1 
-    //         image1={"https://drive.google.com/file/d/1cekTNR3DxeSvxwsPOqHbJMqVx5jPpxHT/view?usp=sharing"}
-    //         image2={""}
-    //         />,
-    //         section2: <ImageTemplate3 
-    //         image1={"IMAGE1 URL REACHED"}
-    //         image2={""}
-    //         />,
-    //         section3: <ImageTemplate2 
-    //         image1={"IMAGE1 URL REACHED"}
-    //         image2={""}
-    //         />
+    //         main: ""
     //     }
     // });
     // const [p4, setP4] = useState({
@@ -115,19 +76,7 @@ const ProjectContextProvider = (props) => {
     //         description: "P4 details description"
     //     },
     //     images: {
-    //         main: "",
-    //         section1: <ImageTemplate1 
-    //         image1={"IMAGE1 URL REACHED"}
-    //         image2={""}
-    //         />,
-    //         section2: <ImageTemplate3 
-    //         image1={"IMAGE1 URL REACHED"}
-    //         image2={""}
-    //         />,
-    //         section3: <ImageTemplate2 
-    //         image1={"IMAGE1 URL REACHED"}
-    //         image2={""}
-    //         />
+    //         main: ""
     //     }
     // });
     // const [p5, setP5] = useState({
@@ -144,30 +93,21 @@ const ProjectContextProvider = (props) => {
     //         description: "P5 details description"
     //     },
     //     images: {
-    //         main: "",
-    //         section1: <ImageTemplate1 
-    //         image1={"IMAGE1 URL REACHED"}
-    //         image2={""}
-    //         />,
-    //         section2: <ImageTemplate3 
-    //         image1={"IMAGE1 URL REACHED"}
-    //         image2={""}
-    //         />,
-    //         section3: <ImageTemplate2 
-    //         image1={"IMAGE1 URL REACHED"}
-    //         image2={""}
-    //         />
+    //         main: ""
     //     }
     // });
 
+    // slides show states
     const [ slidesLoading, setSlidesLoading ] = useState(true);
     const [ slideShow, setSlideShow ] = useState([]);
+    const [ slidesPagination, setSlidesPagination ] = useState(0);
+
+    // projects states
     const [ projectsLoading, setProjectsLoading ] = useState(true);
     const [ projects, setProjects ] = useState([]);
-    const [ slidesPagination, setSlidesPagination ] = useState(0);
     const [ isProjectSelected, setIsProjectSelected ] = useState(false);
     const [ selectedProject, setSelectedProject ] = useState({});
-    const [ hoveredProject, setHoveredProject ] = useState(0)
+    const [ hoveredProject, setHoveredProject ] = useState(0);
 
     const getProjects = () => {
         console.log("getProjects hit")
@@ -189,8 +129,8 @@ const ProjectContextProvider = (props) => {
         });
     };
 
-    const handleMenuHover = (hoverType, projectIndex) => {
-        hoverType === "enter" ? setHoveredProject(projectIndex) : setHoveredProject(0);
+    const handleMenuHover = (projectIndex) => {
+        setHoveredProject(projectIndex);
     };
     const handleSelectedProject = (project) => {
         setSelectedProject(project);

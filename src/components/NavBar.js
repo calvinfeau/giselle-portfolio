@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { ProjectContext } from "../context/ProjectContext";
 
 const Wrapper = styled.div`
 z-index:                        100;
@@ -14,11 +15,13 @@ width:                          200px;
 `;
 
 const NavBar = () => {
+    const { handleUnselectedProject } = useContext(ProjectContext);
+
     return ( 
         <Wrapper className="width flex space-between">
             <Link to="/">Giselle Hernandez</Link>
             <Menu className="flex space-between align-center"> 
-                <Link to="/projects">Work</Link>
+                <Link to="/projects" onClick={() => handleUnselectedProject()} >Work</Link>
                 <Link to="/about">About</Link>
             </Menu>
         </Wrapper>

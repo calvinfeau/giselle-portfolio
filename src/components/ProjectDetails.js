@@ -9,8 +9,8 @@ const ProjectDetails = () => {
     return (
         <div>
             <div>
-                <div>{selectedProject.title}</div>
-                <div>{selectedProject.subtitle}</div>
+                <div>{ selectedProject.title }</div>
+                <div>{ selectedProject.subtitle }</div>
                 <ImageMenu />
             </div>
             <TextDetails />
