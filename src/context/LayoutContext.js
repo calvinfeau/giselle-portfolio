@@ -3,12 +3,6 @@ import React, { createContext, useEffect, useState } from "react";
 export const LayoutContext = createContext();
 
 const LayoutContextProvider = (props) => {
-    // const [ windowDimensions, setWindowDimensions ] = useState({
-    //     width: window.innerWidth,
-    //     height: window.innerHeight
-    // });
-
-    const [ imageSizeToUse, setImageSizeToUse] = useState("");
 
     const breakpoint = {
         mobile: 480,
@@ -16,28 +10,38 @@ const LayoutContextProvider = (props) => {
         laptop: 1024,
         desktop: 1200
     };
-
-    const handleResize = () => {
+    
+    const getWindowSize = () => {
+        let windowSize = "";
         console.log("window.innerWidth >= breakpoint.mobile && window.innerWidth < breakpoint.tablet: ", window.innerWidth >= breakpoint.mobile && window.innerWidth < breakpoint.tablet)
         switch (true) {
             case window.innerWidth < breakpoint.mobile: 
                 console.log("case 1 hit");
-                setImageSizeToUse("small");
+                windowSize = "small"
                 break;
             case window.innerWidth >= breakpoint.mobile && window.innerWidth < breakpoint.tablet:
                 console.log("case 2 hit")
-                setImageSizeToUse("medium");
+                windowSize = "medium"
                 break;
             case window.innerWidth >= breakpoint.tablet && window.innerWidth < breakpoint.laptop:
                 console.log("case 3 hit")
-                setImageSizeToUse("large");
+                windowSize = "large"
                 break;
             case window.innerWidth >= breakpoint.laptop:
                 console.log("case 4 hit")
-                setImageSizeToUse("large");
+                windowSize = "large"
         };
+        return windowSize;
     };
-    
+
+    const [ imageSizeToUse, setImageSizeToUse] = useState(getWindowSize);
+
+
+    const handleResize = () => {
+        let newWindowSize = getWindowSize();
+        setImageSizeToUse(newWindowSize);
+    }
+                
     useEffect(() => {
         window.addEventListener("resize", handleResize);
         return () => { window.removeEventListener("resize", handleResize)}

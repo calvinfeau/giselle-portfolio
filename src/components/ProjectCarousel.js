@@ -61,11 +61,12 @@ const ProjectOverview = () => {
             <Carousel defaultWait={100000}>
                 { slideShow.map((slide, index) => (
                     <Slide className="flex align-center justify-center" key={ index } right>
-                        <Img src={ `${ slide.images[imageSizeToUse] }` } alt={ `${ slide.projectName } image` }/>
+                        {/* <Img src={ `${ slide.images[imageSizeToUse] }` } alt={ `${ slide.projectName } image` }/> */}
+                        <Img src={ window.location.origin + `/assets/images/slideshow/${imageSizeToUse}/Giselle_Hernandez_SS_${slide.projectName.split(' ')[0]}_${index+1}_${imageSizeToUse.split('')[0].toUpperCase()}.jpg` } alt={ `${ slide.projectName } image` }/>
                     </Slide> 
                 ))}
             </Carousel>
-        </Wrapper>
+        </Wrapper>  
     );
 };
     
