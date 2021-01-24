@@ -97,14 +97,17 @@ const ProjectContextProvider = (props) => {
     //     }
     // });
 
+    // slides show states
     const [ slidesLoading, setSlidesLoading ] = useState(true);
     const [ slideShow, setSlideShow ] = useState([]);
+    const [ slidesPagination, setSlidesPagination ] = useState(0);
+
+    // projects states
     const [ projectsLoading, setProjectsLoading ] = useState(true);
     const [ projects, setProjects ] = useState([]);
-    const [ slidesPagination, setSlidesPagination ] = useState(0);
     const [ isProjectSelected, setIsProjectSelected ] = useState(false);
     const [ selectedProject, setSelectedProject ] = useState({});
-    const [ hoveredProject, setHoveredProject ] = useState(0)
+    const [ hoveredProject, setHoveredProject ] = useState(0);
 
     const getProjects = () => {
         console.log("getProjects hit")

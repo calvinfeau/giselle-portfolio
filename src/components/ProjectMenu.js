@@ -12,6 +12,7 @@ const ProjectMenu = () => {
                     <div 
                     onMouseEnter={() => handleMenuHover(index)}
                     onClick={() => handleSelectedProject(project)}
+                    key={index}
                     >
                         {project.title}
                         <br />

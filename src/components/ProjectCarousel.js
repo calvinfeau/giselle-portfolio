@@ -3,6 +3,7 @@ import makeCarousel from "react-reveal/makeCarousel";
 import Slide from "react-reveal/Slide";
 import styled, { css } from "styled-components";
 import { ProjectContext } from "../context/ProjectContext";
+import { LayoutContext } from "../context/LayoutContext";
 
 /* https://www.react-reveal.com/tutorials/carousel/ */
 const Container = styled.div`
@@ -53,13 +54,14 @@ width:                          auto;
 
 const ProjectOverview = () => {
     const { slideShow } = useContext(ProjectContext);
+    const { imageSizeToUse } = useContext(LayoutContext);
 
     return (
         <Wrapper>
             <Carousel defaultWait={100000}>
                 { slideShow.map((slide, index) => (
                     <Slide className="flex align-center justify-center" key={ index } right>
-                        <Img src={ `${ slide.image }` } alt={ `${ slide.projectID }` }/>
+                        <Img src={ `${ slide.images[imageSizeToUse] }` } alt={ `${ slide.projectName } image` }/>
                     </Slide> 
                 ))}
             </Carousel>
