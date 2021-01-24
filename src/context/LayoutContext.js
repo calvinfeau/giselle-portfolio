@@ -40,15 +40,21 @@ const LayoutContextProvider = (props) => {
     const handleResize = () => {
         let newWindowSize = getWindowSize();
         setImageSizeToUse(newWindowSize);
-    }
-                
+    };
+
+    const getImagePath = (imageTitle, number, type) => {
+        const slideShowImagePath = `/assets/images/slideshow/${imageSizeToUse}/Giselle_Hernandez_SS_${imageTitle.split(' ')[0]}_${number}_${imageSizeToUse.split('')[0].toUpperCase()}.jpg`;
+        const projectImagePath = `/assets/images/projects/${imageSizeToUse}/${imageTitle.replace(/ /g, '')}/Giselle_Hernandez_${imageTitle.replace(/ /g, '')}_${number}_${imageSizeToUse.split('')[0].toUpperCase()}.jpg`;
+        return type === "slideshow" ? slideShowImagePath : projectImagePath;
+    };
+
     useEffect(() => {
         window.addEventListener("resize", handleResize);
         return () => { window.removeEventListener("resize", handleResize)}
     }, []);
 
     return (
-        <LayoutContext.Provider value={{ imageSizeToUse }}>
+        <LayoutContext.Provider value={{ imageSizeToUse, getImagePath }}>
             {props.children}
         </LayoutContext.Provider>
     );
