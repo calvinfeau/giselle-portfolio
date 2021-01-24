@@ -12,7 +12,7 @@ const Page = styled.div`
 font-size:                              24px;
 `;
 
-const TextOverview = () => {
+const TextCarousel = () => {
     const { slideShow, slidesPagination } = useContext(ProjectContext);
 
     return ( 
@@ -27,4 +27,4 @@ const TextOverview = () => {
      );
 };
 
-export default TextOverview;
+export default TextCarousel;

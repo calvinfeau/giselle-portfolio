@@ -34,9 +34,6 @@ const LayoutContextProvider = (props) => {
         return windowSize;
     };
 
-    const [ imageSizeToUse, setImageSizeToUse] = useState(getWindowSize);
-
-
     const handleResize = () => {
         let newWindowSize = getWindowSize();
         setImageSizeToUse(newWindowSize);
@@ -47,6 +44,8 @@ const LayoutContextProvider = (props) => {
         const projectImagePath = `/assets/images/projects/${imageSizeToUse}/${imageTitle.replace(/ /g, '')}/Giselle_Hernandez_${imageTitle.replace(/ /g, '')}_${number}_${imageSizeToUse.split('')[0].toUpperCase()}.jpg`;
         return type === "slideshow" ? slideShowImagePath : projectImagePath;
     };
+
+    const [ imageSizeToUse, setImageSizeToUse] = useState(getWindowSize);
 
     useEffect(() => {
         window.addEventListener("resize", handleResize);
@@ -60,4 +59,4 @@ const LayoutContextProvider = (props) => {
     );
 };
 
-export default LayoutContextProvider
+export default LayoutContextProvider;

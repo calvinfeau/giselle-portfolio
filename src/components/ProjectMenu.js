@@ -3,15 +3,15 @@ import ImageMenu from "./ImageMenu";
 import { ProjectContext } from "../context/ProjectContext";
 
 const ProjectMenu = () => {
-    const { projects, handleMenuHover, handleSelectedProject } = useContext(ProjectContext);
+    const { projects, setIsProjectSelected, handleSelectedProject } = useContext(ProjectContext);
 
     return (
-        <div>
+        <div className="flex">
             <div>
                 {projects.map((project, index) => 
                     <div 
-                    onMouseEnter={() => handleMenuHover(index)}
-                    onClick={() => handleSelectedProject(project)}
+                    onMouseEnter={() => handleSelectedProject(index)}
+                    onClick={() => setIsProjectSelected(true)}
                     key={index}
                     >
                         {project.title}

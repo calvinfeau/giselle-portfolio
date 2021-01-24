@@ -10,12 +10,12 @@ max-width:                      100%;
 `;
 
 const ImageMenu = () => {
-    const { projects, hoveredProject } = useContext(ProjectContext);
+    const { projects, selectedProjectIndex } = useContext(ProjectContext);
     const { getImagePath } = useContext(LayoutContext);
 
     return (
         <div>
-            <Img src={window.location.origin + getImagePath(projects[hoveredProject].title, 1, "project")} />
+            <Img src={window.location.origin + getImagePath(projects[selectedProjectIndex].title, 1, "project")} />
         </div>
     );
 };
