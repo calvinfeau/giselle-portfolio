@@ -1,22 +1,22 @@
-import React, { useContext } from "react";
-import ImageMenu from "./ImageMenu";
+import React, { useContext  } from "react";
+import Loading from "./Loading";
 import TextDetails from "./TextDetails";
-import { ProjectContext } from "../context/ProjectContext";
 import NextPageButton from "./NextPageButton";
 import PrevPageButton from "./PrevPageButton";
+import ImageTemplatesLoader from "./ImageTemplatesLoader";
+import { LayoutContext } from "../context/LayoutContext";
 
 const ProjectDetails = () => {
-    const { selectedProject } = useContext(ProjectContext);
+    const { imagesToDisplayReady } = useContext(LayoutContext);
+
+    if (imagesToDisplayReady) {
+        return <Loading />
+    };
 
     return (
         <div>
-            <div className="flex">
-                <div>{ selectedProject.title }</div>
-                <div>{ selectedProject.subtitle }</div>
-                <ImageMenu />
-            </div>
             <TextDetails />
-            
+            <ImageTemplatesLoader />
             <div>
                 <NextPageButton />
                 <PrevPageButton />

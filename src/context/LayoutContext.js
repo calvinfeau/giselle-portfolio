@@ -46,6 +46,33 @@ const LayoutContextProvider = (props) => {
     };
 
     const [ imageSizeToUse, setImageSizeToUse] = useState(getWindowSize);
+    const [ imagesToDisplay , setImagesToDisplay ] = useState([]);
+    const [ imagesToDisplayReady , setImagesToDisplayReady ] = useState(false);
+
+    const handleImageTemplates = (project) => {
+        let count = 2;
+        if (project.imageTemplates) {
+            let imageSections = [];
+            project.imageTemplates.forEach(template => {
+                let numberOfImages = parseInt(template[0]);
+                let imagesPath = [];
+
+                for (let i=0; i < numberOfImages; i++) {
+                    imagesPath.push(getImagePath(project.title, count, "project"));
+                    count++;
+                };
+
+                let imageSection = {
+                    images: imagesPath,
+                    templateNumer: template
+                };
+
+                imageSections.push(imageSection);
+            });
+            setImagesToDisplay(imageSections);
+        };
+        setImagesToDisplayReady(true);
+    };
 
     useEffect(() => {
         window.addEventListener("resize", handleResize);
@@ -53,7 +80,7 @@ const LayoutContextProvider = (props) => {
     }, []);
 
     return (
-        <LayoutContext.Provider value={{ imageSizeToUse, getImagePath }}>
+        <LayoutContext.Provider value={{ imageSizeToUse, getImagePath, imagesToDisplay, imagesToDisplayReady, handleImageTemplates, setImagesToDisplayReady }}>
             {props.children}
         </LayoutContext.Provider>
     );

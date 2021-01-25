@@ -7,13 +7,13 @@ width:                              auto;
 max-width:                          49%;
 `;
 
-const SectionTemplate2 = (props) => {
+const ImageTemplate21 = (props) => {
     return ( 
         <div className="flex space-between s-margin s-framed">
-            <Img src={ window.location.origin + props.image1 }></Img>
-            <Img src={ window.location.origin + props.image2 }></Img>
+            <Img src={ window.location.origin + props.images[0] } />
+            <Img src={ window.location.origin + props.images[1] } />
         </div>
     );
 };
  
-export default SectionTemplate2;
+export default ImageTemplate21;

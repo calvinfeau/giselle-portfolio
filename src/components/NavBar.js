@@ -19,10 +19,10 @@ const NavBar = () => {
 
     return ( 
         <Wrapper className="width flex space-between">
-            <Link onClick={() => handleUnselectProject()} to="/">Giselle Hernandez</Link>
+            <Link onClick={ () => handleUnselectProject() } to="/">Giselle Hernandez</Link>
             <Menu className="flex space-between align-center"> 
-                <Link onClick={() => handleUnselectProject()} to="/projects">Work</Link>
-                <Link onClick={() => handleUnselectProject()} to="/about">About</Link>
+                <Link onClick={ () => handleUnselectProject() } to="/projects">Work</Link>
+                <Link onClick={ () => handleUnselectProject() } to="/about">About</Link>
             </Menu>
         </Wrapper>
      );

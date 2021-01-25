@@ -7,13 +7,16 @@ import { SlideShowContext } from "../context/SlideShowContext";
 const CarouselPage = () => {  
     const { slidesLoading } = useContext(SlideShowContext);
 
-    return slidesLoading ? 
-        <Loading /> 
-        : 
+    if (slidesLoading) {
+        return <Loading />
+    };
+
+    return (
         <> 
             <ProjectCarousel />
             <TextCarousel /> 
         </>
+    );
 };
 
 export default CarouselPage;

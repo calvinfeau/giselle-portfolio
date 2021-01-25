@@ -1,18 +1,10 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 import Loading from "../components/Loading";
 import ProjectDetails from "../components/ProjectDetails";
+import ProjectIntro from "../components/ProjectIntro";
 import ProjectMenu from "../components/ProjectMenu";
+import MainImage from "../components/MainImage";
 import { ProjectContext } from "../context/ProjectContext";
-
-const Img = styled.img`
-height:                         auto;
-width:                          auto;
-max-width:                      100%;
-`;
-const Title = styled.div`
-font-size:                      36px;
-`;
 
 const WorkPage = () => {
     const { projectsLoading, isProjectSelected } = useContext(ProjectContext);
@@ -21,7 +13,12 @@ const WorkPage = () => {
         return <Loading />
     };
     
-    return isProjectSelected ? <ProjectDetails /> : <ProjectMenu />
+    return (
+        <div>
+            {isProjectSelected ? <ProjectIntro /> : <ProjectMenu />}
+            <MainImage />
+            {isProjectSelected ? <ProjectDetails /> : ''}
+        </div>)
 };
 
 export default WorkPage;

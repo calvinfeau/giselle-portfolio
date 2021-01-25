@@ -1,18 +1,25 @@
 import React, { useContext } from "react";
-import ImageMenu from "./ImageMenu";
 import { ProjectContext } from "../context/ProjectContext";
+import { LayoutContext } from "../context/LayoutContext";
 
 const ProjectMenu = () => {
-    const { projects, setIsProjectSelected, handleSelectedProject } = useContext(ProjectContext);
+    const { projects, selectedProject, setIsProjectSelected, handleSelectedProject } = useContext(ProjectContext);
+    const { handleImageTemplates, setImagesToDisplayReady } = useContext(LayoutContext);
+
+    const handleClick = () => {
+        setImagesToDisplayReady(false);
+        setIsProjectSelected(true);
+        handleImageTemplates(selectedProject);
+    }
 
     return (
         <div className="flex">
             <div>
                 {projects.map((project, index) => 
                     <div 
-                    onMouseEnter={() => handleSelectedProject(index)}
-                    onClick={() => setIsProjectSelected(true)}
-                    key={index}
+                    onMouseEnter={ () => handleSelectedProject(index) }
+                    onClick={ () => handleClick() }
+                    key={ index }
                     >
                         {project.title}
                         <br />
@@ -21,7 +28,6 @@ const ProjectMenu = () => {
                     </div>
                 )}
             </div>
-            <ImageMenu />
         </div>
     );
 };

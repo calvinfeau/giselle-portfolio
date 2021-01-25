@@ -9,7 +9,7 @@ width:                          auto;
 max-width:                      100%;
 `;
 
-const ImageMenu = () => {
+const MainImage = () => {
     const { projects, selectedProjectIndex } = useContext(ProjectContext);
     const { getImagePath } = useContext(LayoutContext);
 
@@ -20,4 +20,4 @@ const ImageMenu = () => {
     );
 };
 
-export default ImageMenu;
+export default MainImage;
