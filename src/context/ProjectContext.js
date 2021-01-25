@@ -26,7 +26,7 @@ const ProjectContextProvider = (props) => {
         setSelectedProject(projects[projectToSelect]);
     };
 
-    const handleUnselectedProject = () => {
+    const handleUnselectProject = () => {
         setIsProjectSelected(false);
         setSelectedProject({});
     };
@@ -44,7 +44,7 @@ const ProjectContextProvider = (props) => {
         getProjects,
         setIsProjectSelected,
         handleSelectedProject,
-        handleUnselectedProject
+        handleUnselectProject
         }} >
             {props.children}
         </ProjectContext.Provider>

@@ -23,7 +23,7 @@ const SlideShowContextProvider = (props) => {
         <SlideShowContext.Provider value={{ slidesLoading, slideShow, slidesPagination, setSlidesPagination, getSlideShow }}>
             {props.children}
         </SlideShowContext.Provider>
-    )
+    );
 
 };
 
