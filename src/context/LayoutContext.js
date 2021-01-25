@@ -64,7 +64,7 @@ const LayoutContextProvider = (props) => {
 
                 let imageSection = {
                     images: imagesPath,
-                    templateNumer: template
+                    templateNumber: template
                 };
 
                 imageSections.push(imageSection);

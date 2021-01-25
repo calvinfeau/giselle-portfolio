@@ -9,7 +9,7 @@ import { LayoutContext } from "../context/LayoutContext";
 const ProjectDetails = () => {
     const { imagesToDisplayReady } = useContext(LayoutContext);
 
-    if (imagesToDisplayReady) {
+    if (!imagesToDisplayReady) {
         return <Loading />
     };
 
