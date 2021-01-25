@@ -2,10 +2,10 @@ import React, { useContext } from "react";
 import ProjectCarousel from "../components/ProjectCarousel";
 import TextCarousel from "../components/TextCarousel";
 import Loading from "../components/Loading";
-import { ProjectContext } from "../context/ProjectContext";
+import { SlideShowContext } from "../context/SlideShowContext";
 
 const CarouselPage = () => {  
-    const { slidesLoading } = useContext(ProjectContext);
+    const { slidesLoading } = useContext(SlideShowContext);
 
     return slidesLoading ? 
         <Loading /> 

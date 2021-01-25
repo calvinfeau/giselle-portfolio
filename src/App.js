@@ -2,12 +2,14 @@ import React, { useContext, useEffect } from "react";
 import { Route } from "react-router-dom";
 import CarouselPage from "./pages/CarouselPage";
 import AboutPage from "./pages/AboutPage";
-import WorkPage from "./pages/WorkMenuPage";
+import ProjectPage from "./pages/ProjectsPage";
 import NavBar from "./components/NavBar";
 import { ProjectContext } from "./context/ProjectContext";
+import { SlideShowContext } from "./context/SlideShowContext";
 
 const App = () => {
-  const { getSlideShow, getProjects } = useContext(ProjectContext);
+  const { getSlideShow } = useContext(SlideShowContext);
+  const { getProjects } = useContext(ProjectContext);
 
   useEffect(() => {
     getSlideShow();
@@ -18,7 +20,7 @@ const App = () => {
     <div className="flex flex-column align-center justify-center">
       <NavBar />
       <Route exact path="/" render={() => <CarouselPage />} />
-      <Route exact path="/projects" render={() => <WorkPage />} />
+      <Route exact path="/projects" render={() => <ProjectPage />} />
       <Route exact path="/about" render={() => <AboutPage />} />
     </div>
   );

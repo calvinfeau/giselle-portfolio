@@ -27,7 +27,7 @@ const LayoutContextProvider = (props) => {
                 console.log("case 3 hit")
                 windowSize = "large"
                 break;
-            case window.innerWidth >= breakpoint.laptop:
+            default:
                 console.log("case 4 hit")
                 windowSize = "large"
         };

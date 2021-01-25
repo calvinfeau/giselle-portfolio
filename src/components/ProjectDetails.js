@@ -16,6 +16,7 @@ const ProjectDetails = () => {
                 <ImageMenu />
             </div>
             <TextDetails />
+            
             <div>
                 <NextPageButton />
                 <PrevPageButton />

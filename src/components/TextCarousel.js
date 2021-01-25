@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { ProjectContext } from "../context/ProjectContext";
+import { SlideShowContext } from "../context/SlideShowContext";
 
 const Wrapper = styled.div`
 z-index:                                100;
@@ -13,13 +13,13 @@ font-size:                              24px;
 `;
 
 const TextCarousel = () => {
-    const { slideShow, slidesPagination } = useContext(ProjectContext);
+    const { slideShow, slidesPagination } = useContext(SlideShowContext);
 
     return ( 
         <Wrapper className="width flex space-between align-center">
             <div>
                 { slideShow[slidesPagination].projectName }
-                <br></br>
+                <br />
                 { slideShow[slidesPagination].title }
             </div>
             <Page>{ (slidesPagination + 1) + " / " + slideShow.length }</Page>
