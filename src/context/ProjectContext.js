@@ -7,8 +7,11 @@ const ProjectContextProvider = (props) => {
 
     const [ projectsLoading, setProjectsLoading ] = useState(true);
     const [ projects, setProjects ] = useState([]);
+
+    const initialSelectedProjectState = {};
+    const [ selectedProject, setSelectedProject ] = useState(initialSelectedProjectState);
+
     const [ isProjectSelected, setIsProjectSelected ] = useState(false);
-    const [ selectedProject, setSelectedProject ] = useState({});
     const [ selectedProjectIndex, setSelectedProjectIndex ] = useState(0);
 
     const getProjects = () => {
@@ -21,14 +24,14 @@ const ProjectContextProvider = (props) => {
     };
     
     const handleSelectedProject = (projectIndex) => {
-        const projectToSelect = projectIndex < 0 ? projects.length-1 : projectIndex === projects.length ? 0 : projectIndex;
-        setSelectedProjectIndex(projectToSelect);
-        setSelectedProject(projects[projectToSelect]);
+        const projectIndexToSelect = projectIndex < 0 ? projects.length-1 : projectIndex === projects.length ? 0 : projectIndex;
+        setSelectedProjectIndex(projectIndexToSelect);
+        setSelectedProject(projects[projectIndexToSelect]);
     };
 
-    const handleUnselectProject = () => {
+    const resetSelectedProject = () => {
+        setSelectedProject(initialSelectedProjectState);
         setIsProjectSelected(false);
-        setSelectedProject({});
     };
 
     return (
@@ -43,8 +46,9 @@ const ProjectContextProvider = (props) => {
         // functions
         getProjects,
         setIsProjectSelected,
+        setSelectedProject,
         handleSelectedProject,
-        handleUnselectProject
+        resetSelectedProject
         }} >
             {props.children}
         </ProjectContext.Provider>

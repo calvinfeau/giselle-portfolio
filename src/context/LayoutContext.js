@@ -46,10 +46,18 @@ const LayoutContextProvider = (props) => {
     };
 
     const [ imageSizeToUse, setImageSizeToUse] = useState(getWindowSize);
-    const [ imagesToDisplay , setImagesToDisplay ] = useState([]);
+    const initialImagesToDisplayState = [];
+    
+    const [ imagesToDisplay , setImagesToDisplay ] = useState(initialImagesToDisplayState);
     const [ imagesToDisplayReady , setImagesToDisplayReady ] = useState(false);
 
     const handleImageTemplates = (project) => {
+        setImagesToDisplay(initialImagesToDisplayState);
+        setImagesToDisplayReady(false);
+        console.log("project: ", project);
+        console.log("imagesToDisplay: ", imagesToDisplay);
+        console.log("imagesToDisplayReady: ", imagesToDisplayReady);
+
         let count = 2;
         if (project.imageTemplates) {
             let imageSections = [];
@@ -74,13 +82,30 @@ const LayoutContextProvider = (props) => {
         setImagesToDisplayReady(true);
     };
 
+    const resetImageToDisplay = () => {
+        setImagesToDisplayReady(false);
+        setImagesToDisplay(initialImagesToDisplayState)
+    }
+
     useEffect(() => {
         window.addEventListener("resize", handleResize);
         return () => { window.removeEventListener("resize", handleResize)}
     }, []);
 
     return (
-        <LayoutContext.Provider value={{ imageSizeToUse, getImagePath, imagesToDisplay, imagesToDisplayReady, handleImageTemplates, setImagesToDisplayReady }}>
+        <LayoutContext.Provider value={{ 
+        // states
+        imageSizeToUse, 
+        imagesToDisplay, 
+        imagesToDisplayReady, 
+
+        // functions
+        getImagePath, 
+        setImagesToDisplay, 
+        setImagesToDisplayReady,
+        resetImageToDisplay,
+        handleImageTemplates
+        }}>
             {props.children}
         </LayoutContext.Provider>
     );

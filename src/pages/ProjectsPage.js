@@ -18,7 +18,8 @@ const WorkPage = () => {
             {isProjectSelected ? <ProjectIntro /> : <ProjectMenu />}
             <MainImage />
             {isProjectSelected ? <ProjectDetails /> : ''}
-        </div>)
+        </div>
+    );
 };
 
 export default WorkPage;

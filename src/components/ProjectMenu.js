@@ -4,13 +4,12 @@ import { LayoutContext } from "../context/LayoutContext";
 
 const ProjectMenu = () => {
     const { projects, selectedProject, setIsProjectSelected, handleSelectedProject } = useContext(ProjectContext);
-    const { handleImageTemplates, setImagesToDisplayReady } = useContext(LayoutContext);
+    const { handleImageTemplates } = useContext(LayoutContext);
 
     const handleClick = () => {
-        setImagesToDisplayReady(false);
-        setIsProjectSelected(true);
         handleImageTemplates(selectedProject);
-    }
+        setIsProjectSelected(true);
+    };
 
     return (
         <div className="flex">

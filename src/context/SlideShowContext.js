@@ -24,7 +24,6 @@ const SlideShowContextProvider = (props) => {
             {props.children}
         </SlideShowContext.Provider>
     );
-
 };
 
 export default SlideShowContextProvider;
