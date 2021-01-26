@@ -14,13 +14,13 @@ max-height:                             50vh;
 max-width:                              35%;
 `;
 
-const SectionTemplate4 = (props) => {
+const ImageTemplate22 = (props) => {
     return ( 
         <div className="flex space-between s-margin s-height">
-            <Img1 src={ window.location.origin + props.image1 }></Img1>
-            <Img2 src={ window.location.origin + props.image2 }></Img2>
+            <Img1 src={ window.location.origin + props.images[0] } />
+            <Img2 src={ window.location.origin + props.images[1] } />
         </div>
     );
 };
  
-export default SectionTemplate4;
+export default ImageTemplate22;

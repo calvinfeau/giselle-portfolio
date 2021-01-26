@@ -7,12 +7,12 @@ width:                          auto;
 max-width:                      100%;
 `;
 
-const SectionTemplate1 = (props) => {
+const ImageTemplate11 = (props) => {
     return ( 
         <div className="flex align-center justify-center s-margin s-height">
-            <Img src={ window.location.origin + props.image1 }></Img>
+            <Img src={ window.location.origin + props.images[0] } />
         </div>
     );
 };
  
-export default SectionTemplate1;
+export default ImageTemplate11;

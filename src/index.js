@@ -5,14 +5,17 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import {BrowserRouter as Router} from "react-router-dom";
 import ProjectContextProvider from "./context/ProjectContext";
+import SlideShowContextProvider from "./context/SlideShowContext";
 import LayoutContextProvider from "./context/LayoutContext";
 
 ReactDOM.render(
     <Router>
         <ProjectContextProvider>
-            <LayoutContextProvider>
-                <App />
-            </LayoutContextProvider>
+            <SlideShowContextProvider>
+                <LayoutContextProvider>
+                    <App />
+                </LayoutContextProvider>
+            </SlideShowContextProvider>
         </ProjectContextProvider>
     </Router>, 
     document.getElementById("root")

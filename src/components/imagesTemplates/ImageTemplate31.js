@@ -14,13 +14,14 @@ min-height:                             70vh;
 max-width:                              64%;
 `;
 
-const SectionTemplate3 = (props) => {
+const ImageTemplate31 = (props) => {
     return ( 
         <div className="flex space-between s-margin s-height">
-            <Img1 src={ window.location.origin + props.image1 }></Img1>
-            <Img2 src={ window.location.origin + props.image2 }></Img2>
+            <Img1 src={ window.location.origin + props.images[0] } />
+            <Img2 src={ window.location.origin + props.images[1] } />
+            <Img2 src={ window.location.origin + props.images[2] } />
         </div>
     );
 };
  
-export default SectionTemplate3;
+export default ImageTemplate31;

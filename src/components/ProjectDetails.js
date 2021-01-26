@@ -1,19 +1,18 @@
-import React, { useContext } from "react";
-import ImageMenu from "./ImageMenu";
+import React from "react";
 import TextDetails from "./TextDetails";
-import { ProjectContext } from "../context/ProjectContext";
+import NextPageButton from "./NextPageButton";
+import PrevPageButton from "./PrevPageButton";
+import ImageTemplatesLoader from "./ImageTemplatesLoader";
 
 const ProjectDetails = () => {
-    const { selectedProject } = useContext(ProjectContext);
-
     return (
         <div>
-            <div>
-                <div>{ selectedProject.title }</div>
-                <div>{ selectedProject.subtitle }</div>
-                <ImageMenu />
-            </div>
             <TextDetails />
+            <ImageTemplatesLoader />
+            <div>
+                <NextPageButton />
+                <PrevPageButton />
+            </div>
         </div>
     );
 };

@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import makeCarousel from "react-reveal/makeCarousel";
 import Slide from "react-reveal/Slide";
 import styled, { css } from "styled-components";
-import { ProjectContext } from "../context/ProjectContext";
+import { SlideShowContext } from "../context/SlideShowContext";
 import { LayoutContext } from "../context/LayoutContext";
 
 /* https://www.react-reveal.com/tutorials/carousel/ */
@@ -23,7 +23,7 @@ ${props => props.side === "left" ? css`cursor: w-resize; margin-left: 10vw;` : c
 `;
 
 const CarouselUI = ({ position, handleClick, children }) => {
-    const { setSlidesPagination } = useContext(ProjectContext);
+    const { setSlidesPagination } = useContext(SlideShowContext);
 
     useEffect(() => { setSlidesPagination(position) })
 
@@ -52,21 +52,22 @@ height:                         auto;
 width:                          auto;
 `;
 
-const ProjectOverview = () => {
-    const { slideShow } = useContext(ProjectContext);
-    const { imageSizeToUse } = useContext(LayoutContext);
+const ProjectCarousel = () => {
+    const { slideShow } = useContext(SlideShowContext);
+    const { getImagePath } = useContext(LayoutContext);
 
     return (
         <Wrapper>
             <Carousel defaultWait={100000}>
                 { slideShow.map((slide, index) => (
                     <Slide className="flex align-center justify-center" key={ index } right>
-                        <Img src={ `${ slide.images[imageSizeToUse] }` } alt={ `${ slide.projectName } image` }/>
+                        {/* <Img src={ `${ slide.images[imageSizeToUse] }` } alt={ `${ slide.projectName } image` }/> */}
+                        <Img src={ window.location.origin + getImagePath(slide.projectName, index+1, "slideshow") } alt={ `${ slide.projectName } image` }/>
                     </Slide> 
                 ))}
             </Carousel>
-        </Wrapper>
+        </Wrapper>  
     );
 };
     
-export default ProjectOverview;
+export default ProjectCarousel;
