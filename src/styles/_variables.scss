@@ -1,0 +1,64 @@
+$background-color: #fffffb;
+$text-grey: rgba(0,0,0, 0.4);
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-laptop: 1024px;
+$breakpoint-desktop: 1200px;
+
+@font-face {
+    font-family:                     "GT America Trial";
+    src:                             url("../fonts/gt-america-light.woff") format('woff');
+};
+@font-face {
+    font-family:                     "Circular";
+    src:                             url("../fonts/CircularStd-Bold.woff") format('woff');
+};
+
+@mixin col-start($column) {
+    grid-column-start: $column;
+};
+
+@mixin phone-portrait {
+    @media only screen 
+    and (max-width: $breakpoint-mobile)
+    and (orientation: portrait) {
+        @content;
+    };
+};
+
+@mixin phone-landscape {
+    @media only screen 
+    and (max-height: $breakpoint-mobile)
+    and (orientation: landscape) {
+        @content;
+    };
+};
+
+@mixin tablet {
+    @media only screen 
+    and (min-width: $breakpoint-tablet)
+    and (orientation: portrait) {
+        @content;
+    };
+};
+
+@mixin laptop {
+    @media only screen 
+    and (min-width: $breakpoint-laptop) {
+        @content;
+    };
+};
+
+@mixin desktop {
+    @media only screen
+    and (min-width: $breakpoint-desktop) {
+        @content;
+    };
+};
+
+@mixin desktop-portrait {
+    @media only screen 
+    and (min-height: $breakpoint-desktop) {
+        @content;
+    };
+};

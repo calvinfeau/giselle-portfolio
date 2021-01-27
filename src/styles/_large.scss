@@ -1,0 +1,52 @@
+@import "./variables";
+
+@include laptop {
+    $text-small: 17px;
+    $text-medium: 21px;
+    $text-large: 24px;
+    $text-xl: 48px;
+
+    .text-small {
+        font-size: $text-small;
+    }
+    .text-medium {
+        font-size: $text-medium;
+    }
+    .text-large {
+        font-size: $text-large;
+    }
+    .text-xl {
+        font-size: $text-xl;
+    }
+
+    .width {
+        width: 80vw;
+        max-width: 1400px;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(12, auto);
+    }
+    .col-start-#{num} {
+        @include col-start(#{num});
+    }
+    .row-#{num} {
+        grid-template-rows: repeat(#{num}, auto);
+    }
+    // .margin-top {
+    //     margin-top:                       75px;
+    // }
+    // .s-margin {
+    //     margin-bottom:                    100px;
+    // } 
+    // .s-height {
+    //     min-height:                       80vh;
+    // }
+    // .s-framed {
+    //     height:                           80vh;
+    //     background-color:               burlywood;
+    //     align-items:                      center;
+    // }
+
+
+};
