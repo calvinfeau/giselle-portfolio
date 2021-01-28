@@ -12,10 +12,10 @@ const CarouselPage = () => {
     };
 
     return (
-        <> 
+        <div className="width flex flex-column"> 
             <ProjectCarousel />
             <TextCarousel /> 
-        </>
+        </div>
     );
 };
 

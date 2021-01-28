@@ -1,0 +1,16 @@
+@import "./styles/_reset";
+@import "./styles/_general";
+@import "./styles/_large";
+@import "./styles/_medium";
+
+/* personalize the react-reveal api */
+.react-reveal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 200px);
+  // width: 100vw;
+  // padding: 0 0;
+  // margin: 0 50px;
+  // max-width: 1400px;
+}

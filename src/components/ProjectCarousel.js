@@ -13,13 +13,10 @@ const Arrows = styled.div`
 position:                       absolute;
 `;
 const Arrow = styled.div`
-height:                         80vh;
-width:                          40vw;
-max-width:                      600px;
 z-index:                        100;
 user-select:                    none;
 ${props => props.right ? css`left: 90%;` : css`left: 0%;`}
-${props => props.side === "left" ? css`cursor: w-resize; margin-left: 10vw;` : css`cursor: e-resize; margin-right: 10vw;`}
+${props => props.side === "left" ? css`cursor: w-resize; margin-left: 0vw;` : css`cursor: e-resize; margin-right: 0vw;`}
 `;
 
 const CarouselUI = ({ position, handleClick, children }) => {
@@ -28,11 +25,11 @@ const CarouselUI = ({ position, handleClick, children }) => {
     useEffect(() => { setSlidesPagination(position) })
 
     return (
-        <Container>
+        <Container className="carousel-slideshow">
             { children }
-            <Arrows className="flex">
-                <Arrow side={ "left" } onClick={ handleClick } data-position={ position - 1 } />
-                <Arrow side={ "right" } right onClick={ handleClick } data-position={ position + 1 } />
+            <Arrows className="flex carousel-slideshow">
+                <Arrow className="carousel-arrow" side={ "left" } onClick={ handleClick } data-position={ position - 1 } />
+                <Arrow className="carousel-arrow" side={ "right" } right onClick={ handleClick } data-position={ position + 1 } />
             </Arrows>
         </Container>
     );
@@ -40,10 +37,6 @@ const CarouselUI = ({ position, handleClick, children }) => {
 const Carousel = makeCarousel(CarouselUI);
 /* -------------------------------------------------- */
 
-const Wrapper = styled.div`
-height:                         80vh;
-width:                          100vw;
-`;
 const Img = styled.img`
 position:                       relative;
 max-width:                      100%;
@@ -57,16 +50,16 @@ const ProjectCarousel = () => {
     const { getImagePath } = useContext(LayoutContext);
 
     return (
-        <Wrapper>
+        <div>
             <Carousel defaultWait={100000}>
                 { slideShow.map((slide, index) => (
-                    <Slide className="flex align-center justify-center" key={ index } right>
+                    <Slide key={ index } right>
                         {/* <Img src={ `${ slide.images[imageSizeToUse] }` } alt={ `${ slide.projectName } image` }/> */}
                         <Img src={ window.location.origin + getImagePath(slide.projectName, index+1, "slideshow") } alt={ `${ slide.projectName } image` }/>
                     </Slide> 
                 ))}
             </Carousel>
-        </Wrapper>  
+        </div>  
     );
 };
     

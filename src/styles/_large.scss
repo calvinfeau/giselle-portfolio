@@ -1,0 +1,83 @@
+@import "./media";
+
+@include laptop {
+    $text-small: 17px;
+    $text-medium: 21px;
+    $text-large: 24px;
+    $text-xl: 48px;
+
+    .text-small {
+        font-size: $text-small;
+    }
+    .text-medium {
+        font-size: $text-medium;
+    }
+    .text-large {
+        font-size: $text-large;
+    }
+    .text-xl {
+        font-size: $text-xl;
+    }
+    .width {
+        width: auto;
+        margin: 0 50px;
+        // max-width: 1400px;
+    }
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(12, 8.3fr);
+    }
+    .col-start-1 {
+        grid-column-start: span 3;
+    }
+    .col-end-12 {
+        grid-column-start: 12;
+        justify-self: end;
+    }
+    .row-1 {
+        grid-template-rows: auto;
+    }
+    .row-2 {
+        grid-template-rows: auto;
+    }
+
+    .navbar {
+        height: 90px;
+        z-index: 100;
+        background-color: transparent;
+
+        & div {
+            a:last-child {
+                margin-left: 30px;
+            }
+        }
+    }
+    .carousel-text {
+        height: 110px;
+        z-index: 100;
+        background-color: transparent;
+    }
+    .carousel-slideshow {
+        height: calc(100vh - 200px);
+    }
+    .carousel-arrow {
+        height: 100%;
+        width: calc(50vw - 50px);
+    }
+    // .margin-top {
+    //     margin-top:                       75px;
+    // }
+    // .s-margin {
+    //     margin-bottom:                    100px;
+    // } 
+    // .s-height {
+    //     min-height:                       80vh;
+    // }
+    // .s-framed {
+    //     height:                           80vh;
+    //     background-color:               burlywood;
+    //     align-items:                      center;
+    // }
+
+
+};
