@@ -1,22 +1,7 @@
-$background-color: #fffffb;
-$text-grey: rgba(0,0,0, 0.4);
 $breakpoint-mobile: 480px;
 $breakpoint-tablet: 768px;
 $breakpoint-laptop: 1024px;
 $breakpoint-desktop: 1200px;
-
-@font-face {
-    font-family:                     "GT America Trial";
-    src:                             url("../fonts/gt-america-light.woff") format('woff');
-};
-@font-face {
-    font-family:                     "Circular";
-    src:                             url("../fonts/CircularStd-Bold.woff") format('woff');
-};
-
-@mixin col-start($column) {
-    grid-column-start: $column;
-};
 
 @mixin phone-portrait {
     @media only screen 
