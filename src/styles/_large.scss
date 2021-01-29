@@ -19,16 +19,17 @@
         font-size: $text-xl;
     }
     .width {
-        width: auto;
-        margin: 0 50px;
-        // max-width: 1400px;
+        width: calc(100vw - 100px);
+    }
+    .max-width {
+        max-width: calc((100vh - 200px) * 1.63);
     }
     .grid {
         display: grid;
         grid-template-columns: repeat(12, 8.3fr);
     }
     .col-start-1 {
-        grid-column-start: span 3;
+        grid-column-start: span 6;
     }
     .col-end-12 {
         grid-column-start: 12;
@@ -54,15 +55,17 @@
     }
     .carousel-text {
         height: 110px;
+        width: 100vw;
         z-index: 100;
         background-color: transparent;
     }
     .carousel-slideshow {
         height: calc(100vh - 200px);
+        width: 100vw;
     }
     .carousel-arrow {
         height: 100%;
-        width: calc(50vw - 50px);
+        width: 100vw;
     }
     // .margin-top {
     //     margin-top:                       75px;

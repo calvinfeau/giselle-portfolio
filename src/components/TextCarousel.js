@@ -5,7 +5,7 @@ const TextCarousel = () => {
     const { slideShow, slidesPagination } = useContext(SlideShowContext);
 
     return ( 
-        <div className="carousel-text grid row-1 align-center">
+        <div className="max-width carousel-text grid row-1 align-center">
             <div className="col-start-1">
                 <span className="text-medium">{ slideShow[slidesPagination].projectName }</span>
                 <br />
@@ -13,7 +13,7 @@ const TextCarousel = () => {
             </div>
             <div className="text-large col-end-12">{ (slidesPagination + 1) + " / " + slideShow.length }</div>
         </div>
-     );
+    );
 };
 
 export default TextCarousel;
