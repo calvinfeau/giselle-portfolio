@@ -17,7 +17,7 @@ const App = () => {
 }, []);
 
   return (
-    <div>
+    <div className="flex flex-column align-center">
       <NavBar />
       <Route exact path="/" render={() => <CarouselPage />} />
       <Route exact path="/projects" render={() => <ProjectPage />} />

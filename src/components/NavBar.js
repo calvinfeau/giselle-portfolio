@@ -13,7 +13,7 @@ const NavBar = () => {
     };
 
     return ( 
-        <div className="width navbar grid row-1 align-center">
+        <div className="width max-width navbar grid row-1 align-center">
             <Link 
             to="/"
             className="text-large col-start-1"
