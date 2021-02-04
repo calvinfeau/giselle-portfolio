@@ -7,6 +7,7 @@ const Img = styled.img`
 height:                         auto;
 width:                          auto;
 max-width:                      100%;
+max-height: 100vh;
 `;
 
 const MainImage = () => {
@@ -14,7 +15,7 @@ const MainImage = () => {
     const { getImagePath } = useContext(LayoutContext);
 
     return (
-        <div>
+        <div className="col-start-6">
             <Img src={window.location.origin + getImagePath(projects[selectedProjectIndex].title, 1, "project")} />
         </div>
     );

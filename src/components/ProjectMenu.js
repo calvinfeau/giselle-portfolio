@@ -12,21 +12,19 @@ const ProjectMenu = () => {
     };
 
     return (
-        <div className="flex">
-            <div>
-                {projects.map((project, index) => 
-                    <div 
-                    onMouseEnter={ () => handleSelectedProject(index) }
-                    onClick={ () => handleClick() }
-                    key={ index }
-                    >
-                        {project.title}
-                        <br />
-                        {project.tags}
-                        <hr />
-                    </div>
-                )}
-            </div>
+        <div className="col-start-1 margin-top">
+            {projects.map((project, index) => 
+                <div 
+                onMouseEnter={ () => handleSelectedProject(index) }
+                onClick={ () => handleClick() }
+                key={ index }
+                >
+                    <div className="">{project.title}</div>
+                    <br />
+                    <div>{project.tags}</div>
+                    <hr />
+                </div>
+            )}
         </div>
     );
 };

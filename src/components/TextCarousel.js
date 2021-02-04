@@ -5,7 +5,7 @@ const TextCarousel = () => {
     const { slideShow, slidesPagination } = useContext(SlideShowContext);
 
     return ( 
-        <div className="max-width carousel-text grid row-1 align-center">
+        <div className="full-width max-width carousel-text grid row-1 align-center">
             <div className="col-start-1">
                 <span className="text-medium">{ slideShow[slidesPagination].projectName }</span>
                 <br />
