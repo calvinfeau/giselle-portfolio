@@ -55,7 +55,7 @@ const ProjectCarousel = () => {
     const { getImagePath } = useContext(LayoutContext);
 
     return (
-        <div className="">
+        <div>
             <Carousel defaultWait={100000}>
                 { slideShow.map((slide, index) => (
                     <Slide key={ index } right>

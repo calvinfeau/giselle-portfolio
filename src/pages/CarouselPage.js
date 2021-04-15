@@ -6,13 +6,14 @@ import { SlideShowContext } from "../context/SlideShowContext";
 
 const CarouselPage = () => {  
     const { slidesLoading } = useContext(SlideShowContext);
+    console.log("slidesLoading: ", slidesLoading)
 
     if (slidesLoading) {
         return <Loading />
-    };
+    }
 
     return (
-        <div className="flex flex-column align-center"> 
+        <div className="flex flex-column align-center margin-top"> 
             <ProjectCarousel />
             <TextCarousel /> 
         </div>

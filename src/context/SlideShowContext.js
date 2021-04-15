@@ -15,7 +15,7 @@ const SlideShowContextProvider = (props) => {
             let slidesToAdd = [];
             slides.forEach(slide =>  slidesToAdd.push(slide.data()));
             setSlideShow(slidesToAdd);
-            setSlidesLoading(false);
+            slidesToAdd === [] ? setSlidesLoading(true) : setSlidesLoading(false);
         });
     };
 

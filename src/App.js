@@ -14,14 +14,16 @@ const App = () => {
   useEffect(() => {
     getSlideShow();
     getProjects();
-}, []);
+  }, []);
 
   return (
-    <div className="flex flex-column align-center">
+    <div>
       <NavBar />
-      <Route exact path="/" render={() => <CarouselPage />} />
-      <Route exact path="/projects" render={() => <ProjectPage />} />
-      <Route exact path="/about" render={() => <AboutPage />} />
+      <div className="absolute-top">
+        <Route exact path="/" render={() => <CarouselPage />} />
+        <Route exact path="/projects" render={() => <ProjectPage />} />
+        <Route exact path="/about" render={() => <AboutPage />} />
+      </div>
     </div>
   );
 };
