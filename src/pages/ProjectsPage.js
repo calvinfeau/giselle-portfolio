@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Loading from "../components/Loading";
 import ProjectDetails from "../components/ProjectDetails";
 import ProjectIntro from "../components/ProjectIntro";
@@ -8,6 +8,8 @@ import { ProjectContext } from "../context/ProjectContext";
 
 const WorkPage = () => {
     const { projectsLoading, isProjectSelected } = useContext(ProjectContext);
+    console.log("projectsLoading: ", projectsLoading)
+    console.log("isProjectSelected: ", isProjectSelected)
 
     if (projectsLoading) {
         return <Loading />

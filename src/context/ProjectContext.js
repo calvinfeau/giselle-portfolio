@@ -8,10 +8,9 @@ const ProjectContextProvider = (props) => {
     const [ projectsLoading, setProjectsLoading ] = useState(true);
     const [ projects, setProjects ] = useState([]);
 
+    const [ isProjectSelected, setIsProjectSelected ] = useState(false);
     const initialSelectedProjectState = {};
     const [ selectedProject, setSelectedProject ] = useState(initialSelectedProjectState);
-
-    const [ isProjectSelected, setIsProjectSelected ] = useState(false);
     const [ selectedProjectIndex, setSelectedProjectIndex ] = useState(0);
 
     const getProjects = () => {
@@ -19,7 +18,7 @@ const ProjectContextProvider = (props) => {
             let projectsToAdd = [];
             project.forEach(project => projectsToAdd.push(project.data()));
             setProjects(projectsToAdd);
-            setProjectsLoading(false);
+            projectsToAdd === [] ?  setProjectsLoading(true) : setProjectsLoading(false);
         });
     };
     
