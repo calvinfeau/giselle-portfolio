@@ -4,9 +4,9 @@ import { ProjectContext } from "../context/ProjectContext";
 import { LayoutContext } from "../context/LayoutContext";
 
 const Img = styled.img`
-height:                         auto;
-width:                          auto;
-max-width:                      100%;
+height: 100%;
+width: 100%;
+max-width: 100%;
 max-height: 100vh;
 `;
 
@@ -15,7 +15,7 @@ const MainImage = () => {
     const { getImagePath } = useContext(LayoutContext);
 
     return (
-        <div className="col-start-6">
+        <div className="half-width">
             <Img src={window.location.origin + getImagePath(projects[selectedProjectIndex].title, 1, "project")} />
         </div>
     );

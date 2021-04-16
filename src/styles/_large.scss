@@ -22,7 +22,14 @@
         width: 100vw;
     }
     .half-width {
-        width: calc((100vw - 100px)/2);
+        width: 50vw;
+    }
+    .half-width-ratio-included {
+        // width: calc((100vw - 100px)/2);
+        width: calc(((100vh - 200px) * 1.63 ) /2);
+    }
+    .half-width-test {
+        width: calc(((100vh - 200px) * 1.63 ) /2);
     }
     .max-width {
         max-width: calc((100vh - 200px) * 1.63);
