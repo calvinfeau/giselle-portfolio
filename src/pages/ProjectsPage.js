@@ -17,10 +17,8 @@ const WorkPage = () => {
     
     return (
         <div className="flex justify-center full-height">
-            <div className="full-width grid row-1">
                 {isProjectSelected ? <ProjectIntro /> : <ProjectMenu />}
                 <MainImage />
-            </div>
             {isProjectSelected ? <ProjectDetails /> : ''}
         </div>
     );
