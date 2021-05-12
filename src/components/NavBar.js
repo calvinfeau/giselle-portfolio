@@ -20,7 +20,7 @@ const NavBar = () => {
                 className="text-large col-start-1"
                 onClick={ () => handleClick() } 
                 >Giselle Hernandez</Link>
-                <div className="col-end-12 flex"> 
+                <div className="col-end-12 flex text-small"> 
                     <Link onClick={ () => handleClick() } to="/projects">Work</Link>
                     <Link onClick={ () => handleClick() } to="/about">About</Link>
                 </div>
