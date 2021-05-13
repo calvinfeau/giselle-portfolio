@@ -51,7 +51,7 @@ const AboutPage = () => {
                 </ThreeQuarterWidth>
             </div>
             <div className="flex space-between border-top full-width max-width padding-top-15 padding-bottom-100">
-            <div className="text-small">© Giselle Hernandez, 2020</div>
+            <div className="text-small">© Giselle Hernandez, 2021</div>
             </div>
         </div>
     );

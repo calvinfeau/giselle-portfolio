@@ -12,17 +12,18 @@ const ProjectMenu = () => {
     };
 
     return (
-        <div className="margin-top flex flex-column align-end" style={{width: "50vw", marginBottom: "50px", paddingRight: "50px"}}>
+        <div className="margin-top flex flex-column align-end justify-end" style={{width: "calc(50vw - 50px)", marginBottom: "50px", paddingRight: "50px"}}>
             {projects.map((project, index) => 
                 <div 
-                className="half-width-ratio-included"
+                className="half-width-ratio-included-test"
                 onMouseEnter={ () => handleSelectedProject(index) }
                 onClick={ () => handleClick() }
                 key={ index }
                 >
-                    <div className="">{project.title}</div>
-                    <br />
-                    <div>{project.tags}</div>
+                    <div className="padding-top-15 padding-bottom-15">
+                        <div className="text-medium">{project.title}</div>
+                        <div className="text-small">{project.tags}</div>
+                    </div>
                     <hr />
                 </div>
             )}
