@@ -9,7 +9,7 @@ const LayoutContextProvider = (props) => {
 
     // API
     // https://lokeshdhakar.com/projects/color-thief/
-    const [dominantColor, setDominantColor] = useState([]);
+    const [ dominantColor, setDominantColor ] = useState([]);
     const getDominantColor = () => {
         let img = document.querySelector('#mainImage');
         let rgbArray;
@@ -22,12 +22,31 @@ const LayoutContextProvider = (props) => {
         else {
             img.addEventListener('load', function() {
                 rgbArray = colorThief.getColor(img);
-                console.log("rgbArray: ", rgbArray);
                 setDominantColor(rgbArray);
             }); 
         }
     };
     // ------------
+
+    const [ mainImageContrast, setMainImageContrast ] = useState("");
+    const checkMainImageContrast = () => {
+        setMainImageContrast("");
+        let rgbaColor = [];
+        let canvas = document.getElementById("mainImageCanvas");
+        let img = document.getElementById("mainImage");
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(img, 0, 0);
+        // 0 0 is the position at the starting corner of the section we select
+        // canvas.width is the width of the photo and 90 is the height of the navbar 
+        let imgData = ctx.getImageData(0, 0, canvas.width, 90);
+        console.log("imgData.data.slice(0, 3): ", imgData.data.slice(0, 3));
+        
+        rgbaColor = imgData.data.slice(0, 3);
+        console.log("rgbaColor: ", rgbaColor);
+        let yiq = ((rgbaColor[0] * 299) + (rgbaColor[1] * 587) + (rgbaColor[2] * 114)) / 1000;
+        console.log("yiq: ", yiq)
+        yiq >= 128 ? setMainImageContrast("black") : setMainImageContrast("white");
+    };
 
     const breakpoint = {
         mobile: 480,
@@ -121,7 +140,8 @@ const LayoutContextProvider = (props) => {
         // states
         imageSizeToUse, 
         imagesToDisplay, 
-        imagesToDisplayReady, 
+        imagesToDisplayReady,
+        mainImageContrast,
 
         // functions
         getImagePath, 
@@ -129,10 +149,8 @@ const LayoutContextProvider = (props) => {
         setImagesToDisplayReady,
         resetImageToDisplay,
         handleImageTemplates,
+        checkMainImageContrast,
 
-        // API
-        dominantColor,
-        getDominantColor
         }}>
             {props.children}
         </LayoutContext.Provider>
