@@ -1,8 +1,33 @@
 import React, { createContext, useEffect, useState } from "react";
 
+// API
+import ColorThief from "colorthief"
+
 export const LayoutContext = createContext();
 
 const LayoutContextProvider = (props) => {
+
+    // API
+    // https://lokeshdhakar.com/projects/color-thief/
+    const [dominantColor, setDominantColor] = useState([]);
+    const getDominantColor = () => {
+        let img = document.querySelector('#mainImage');
+        let rgbArray;
+        setDominantColor([]);
+        const colorThief = new ColorThief();
+        if (img.complete) { 
+            rgbArray = colorThief.getColor(img);
+            setDominantColor(rgbArray);
+        }
+        else {
+            img.addEventListener('load', function() {
+                rgbArray = colorThief.getColor(img);
+                console.log("rgbArray: ", rgbArray);
+                setDominantColor(rgbArray);
+            }); 
+        }
+    };
+    // ------------
 
     const breakpoint = {
         mobile: 480,
@@ -47,7 +72,6 @@ const LayoutContextProvider = (props) => {
 
     const [ imageSizeToUse, setImageSizeToUse] = useState(getWindowSize);
     const initialImagesToDisplayState = [];
-    
     const [ imagesToDisplay , setImagesToDisplay ] = useState(initialImagesToDisplayState);
     const [ imagesToDisplayReady , setImagesToDisplayReady ] = useState(false);
 
@@ -104,7 +128,11 @@ const LayoutContextProvider = (props) => {
         setImagesToDisplay, 
         setImagesToDisplayReady,
         resetImageToDisplay,
-        handleImageTemplates
+        handleImageTemplates,
+
+        // API
+        dominantColor,
+        getDominantColor
         }}>
             {props.children}
         </LayoutContext.Provider>

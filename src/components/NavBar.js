@@ -4,8 +4,9 @@ import { ProjectContext } from "../context/ProjectContext";
 import { LayoutContext } from "../context/LayoutContext";
 
 const NavBar = () => {
-    const { resetImageToDisplay } = useContext(LayoutContext);
+    const { resetImageToDisplay, dominantColor } = useContext(LayoutContext);
     const { resetSelectedProject } = useContext(ProjectContext);
+    console.log("dominantColor", dominantColor);
 
     const handleClick = () => {
         resetImageToDisplay();
@@ -21,7 +22,7 @@ const NavBar = () => {
                 onClick={ () => handleClick() } 
                 >Giselle Hernandez</Link>
                 <div className="col-end-12 flex text-small"> 
-                    <Link style={{mixBlendMode: "difference"}} onClick={ () => handleClick() } to="/projects">Work</Link>
+                    <Link style={{}} onClick={ () => handleClick() } to="/projects">Work</Link>
                     <Link onClick={ () => handleClick() } to="/about">About</Link>
                 </div>
             </div>
