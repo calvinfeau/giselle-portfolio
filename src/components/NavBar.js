@@ -4,12 +4,13 @@ import { ProjectContext } from "../context/ProjectContext";
 import { LayoutContext } from "../context/LayoutContext";
 
 const NavBar = () => {
-    const { resetImageToDisplay, mainImageContrast } = useContext(LayoutContext);
     const { resetSelectedProject } = useContext(ProjectContext);
+    const { resetImageToDisplay, mainImageContrast, checkMainImageContrast } = useContext(LayoutContext);
 
     const handleClick = () => {
         resetImageToDisplay();
         resetSelectedProject();
+        checkMainImageContrast(false);
     };
 
     return ( 
