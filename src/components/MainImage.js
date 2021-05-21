@@ -14,8 +14,9 @@ const MainImage = () => {
     return (
         <div className="half-width full-height">
             {/* <div style={{backgroundImage: `url(${imagePath})`, width: "100%", height: "100%", maxHeight: "100vh", maxWidth: "100%", backgroundSize: "cover", backgroundPosition: "center"}}></div> */}
-            <img onLoad={ () => handleImageLoad() } id="mainImage" style={{zIndex: "-10", width: "100%", height: "100%", maxHeight: "100vh", maxWidth: "100%"}} src={imagePath } />
-            <canvas id="mainImageCanvas" style={{display: "none", width: "100%", height: "100%", maxHeight: "100vh", maxWidth: "100%", objectFit: "cover"}}></canvas>
+            {/* <canvas id="mainImageCanvas" style={{display: "none", width: "100%", height: "100%", maxHeight: "100vh", maxWidth: "100%", objectFit: "cover"}}></canvas> */}
+            <img onLoad={ () => handleImageLoad() } id="mainImage" style={{zIndex: "-10", width: "100%", height: "100%", maxHeight: "100vh", maxWidth: "100%", objectFit: "cover"}} src={imagePath } />
+            <canvas id="mainImageCanvas" style={{zIndex: "10", position: "absolute", top: "0", left: "50%"}}></canvas>
         </div>
     );
 };

@@ -4,11 +4,16 @@ import { LayoutContext } from "../context/LayoutContext";
 
 const ProjectMenu = () => {
     const { projects, selectedProject, setIsProjectSelected, handleSelectedProject } = useContext(ProjectContext);
-    const { handleImageTemplates } = useContext(LayoutContext);
+    const { handleImageTemplates, checkMainImageContrast } = useContext(LayoutContext);
 
     const handleClick = () => {
         handleImageTemplates(selectedProject);
         setIsProjectSelected(true);
+    };
+
+    const handleMouseEnter = (index) => {
+        handleSelectedProject(index);
+        checkMainImageContrast();
     };
 
     return (
@@ -16,7 +21,7 @@ const ProjectMenu = () => {
             {projects.map((project, index) => 
                 <div 
                 className="half-width-ratio-included-test"
-                onMouseEnter={ () => handleSelectedProject(index) }
+                onMouseEnter={ () => handleMouseEnter(index) }
                 onClick={ () => handleClick() }
                 key={ index }
                 >

@@ -33,13 +33,18 @@ const LayoutContextProvider = (props) => {
         if (checkContrast) {
             setMainImageContrast("");
             let rgbaColor = [];
-            let canvas = document.getElementById("mainImageCanvas");
+            let ctx = document.getElementById("mainImageCanvas").getContext("2d");
             let img = document.getElementById("mainImage");
-            let ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0);
+            img.onload = () => {
+                ctx.drawImage(img, 0, 0);
+            }
+            // canvas.style.width = "100%";
+            // canvas.style.height = "100%";
+            // canvas.style.maxHeight = "100vh";
+            // canvas.style.maxWidth = "100%";
+            // canvas.style.objectFit = "cover";
             // 0 0 is the position at the starting corner of the section we select
             // canvas.width is the width of the photo and 90 is the height of the navbar 
-            console.log("canvas.width: ", canvas.width)
             let imgData = ctx.getImageData(448, 190, 1, 1);
             console.log("imgData: ", imgData);
             console.log("imgData.data.slice(0, 3): ", imgData.data.slice(0, 3));
@@ -47,7 +52,7 @@ const LayoutContextProvider = (props) => {
             rgbaColor = imgData.data.slice(0, 3);
             console.log("rgbaColor: ", rgbaColor);
             let yiq = ((rgbaColor[0] * 299) + (rgbaColor[1] * 587) + (rgbaColor[2] * 114)) / 1000;
-            console.log("yiq: ", yiq)
+            console.log("yiq: ", yiq);
             yiq >= 128 ? setMainImageContrast("black") : setMainImageContrast("white");
         }
         else {
