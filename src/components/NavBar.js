@@ -4,12 +4,13 @@ import { ProjectContext } from "../context/ProjectContext";
 import { LayoutContext } from "../context/LayoutContext";
 
 const NavBar = () => {
-    const { resetImageToDisplay } = useContext(LayoutContext);
     const { resetSelectedProject } = useContext(ProjectContext);
+    const { resetImageToDisplay, mainImageContrast, checkMainImageContrast } = useContext(LayoutContext);
 
     const handleClick = () => {
         resetImageToDisplay();
         resetSelectedProject();
+        checkMainImageContrast(false);
     };
 
     return ( 
@@ -20,9 +21,9 @@ const NavBar = () => {
                 className="text-large col-start-1"
                 onClick={ () => handleClick() } 
                 >Giselle Hernandez</Link>
-                <div className="col-end-12 flex"> 
-                    <Link onClick={ () => handleClick() } to="/projects">Work</Link>
-                    <Link onClick={ () => handleClick() } to="/about">About</Link>
+                <div className="col-end-12 flex text-small"> 
+                    <Link style={{color: `${mainImageContrast}`}} onClick={ () => handleClick() } to="/projects">Work</Link>
+                    <Link style={{color: `${mainImageContrast}`}} onClick={ () => handleClick() } to="/about">About</Link>
                 </div>
             </div>
         </div>

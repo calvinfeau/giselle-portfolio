@@ -1,62 +1,58 @@
-import React from "react";
+import React, { useCallback, useContext } from "react";
 import styled from "styled-components";
+import { ProjectContext } from "../context/ProjectContext";
 
-const Section = styled.div`
-font-size:         18px;
-`;
-const Title = styled.div`
+const QuarterWidth = styled.div`
 width:            25%;
-border-top:       1px solid black;
-text-align:       right;
-padding:           50px 0;
 `;
-const Text = styled.div`
-width:            70%;
-border-top:       1px solid black;
-padding:          50px 0;
+const ThreeQuarterWidth = styled.div`
+width:            75%;
 `;
 
 const AboutPage = () => {
+    const {projects} = useContext(ProjectContext);
     return ( 
-        <div className="width margin-top flex flex-column">
-            <Section className="flex space-between">
-                <Title>Introduction</Title>
-                <Text>
+        <div className="extra-margin-top flex flex-column align-center full-width text-large">
+            <div className="flex space-between border-top full-width max-width padding-top-50 padding-bottom-150">
+                <QuarterWidth className="padding-top-bottom-50 text-xl font-circular">Bio</QuarterWidth>
+                <ThreeQuarterWidth>
                     Giselle Hernandez is a multidisciplinary designer offering creative direction, design and consultancy on textiles and materials for interior, product, art and fashion. She investigates contemporary culture to create intelligent concepts and material innovations for clients from various&nbsp;fields.
                     <br />
                     <br />
                     Her collections and art installations examine the function and conventional use of materials to develop new design perspectives. Her internationally exhibited research projects question the relation between garments, individual and society to reveal unconscious patterns of behaviour in the everyday use&nbsp;of&nbsp;textiles.
-                </Text>
-            </Section>
-            <Section className="flex space-between">
-                <Title>Services</Title>
-                <Text>
-                    Branding & Identity
                     <br />
-                    Website Design & Development
                     <br />
-                    Packaging Design
                     <br />
-                    Art Direction
+                    {projects.map((project, index) =>
+                        <div className="flex border-bottom padding-top-15 padding-bottom-15" key={index}>
+                            <QuarterWidth>{project.year}</QuarterWidth>
+                            <ThreeQuarterWidth>
+                                {project.agency ? <span>{project.agency}</span> : <span>{project.title}</span>}, {project.role}
+                            </ThreeQuarterWidth>
+                        </div>
+                    )}
+
+                </ThreeQuarterWidth>
+            </div>
+            <div className="flex space-between border-top full-width max-width padding-top-50 padding-bottom-100">
+                <QuarterWidth className="padding-top-bottom-50 text-xl font-circular">Contact</QuarterWidth>
+                <ThreeQuarterWidth>
+                    For current work and design inquiries email 
                     <br />
-                    Lifestyle & Product Photography
+                    <a className="" href="mailto:hello@pechecreme.com" target="_top">hello@pechecreme.com</a>
                     <br />
-                    Editorial & Publication Design
                     <br />
-                    Lookbook Design
-                    <br />
-                    Signage
-                </Text>
-            </Section>
-            <Section className="flex space-between">
-                <Title>Contact</Title>
-                <Text>
-                    <a href="mailto:hello@pechecreme.com" target="_top">hello@pechecreme.com</a>
                     <br />
                     <a href="https://www.linkedin.com/in/gisellehndz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    {/* <br /><a href="" target="_blank" rel="noopener noreferrer">Instagram</a> */}
-                </Text>
-            </Section>
+                    <br />
+                    <a href="" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <br />
+                    <a href="" target="_blank" rel="noopener noreferrer">Behance</a>
+                </ThreeQuarterWidth>
+            </div>
+            <div className="flex space-between border-top full-width max-width padding-top-15 padding-bottom-100">
+            <div className="text-small">© Giselle Hernandez, 2021</div>
+            </div>
         </div>
     );
 };

@@ -4,25 +4,31 @@ import { LayoutContext } from "../context/LayoutContext";
 
 const ProjectMenu = () => {
     const { projects, selectedProject, setIsProjectSelected, handleSelectedProject } = useContext(ProjectContext);
-    const { handleImageTemplates } = useContext(LayoutContext);
+    const { handleImageTemplates, checkMainImageContrast } = useContext(LayoutContext);
 
     const handleClick = () => {
         handleImageTemplates(selectedProject);
         setIsProjectSelected(true);
     };
 
+    const handleMouseEnter = (index) => {
+        handleSelectedProject(index);
+        checkMainImageContrast(true);
+    };
+
     return (
-        <div className="margin-top flex flex-column align-end" style={{width: "50vw", marginBottom: "50px", paddingRight: "50px"}}>
+        <div className="margin-top flex flex-column align-end justify-end" style={{width: "calc(50vw - 50px)", marginBottom: "50px", paddingRight: "50px"}}>
             {projects.map((project, index) => 
                 <div 
-                className="half-width-ratio-included"
-                onMouseEnter={ () => handleSelectedProject(index) }
+                className="half-width-ratio-included-test"
+                onMouseEnter={ () => handleMouseEnter(index) }
                 onClick={ () => handleClick() }
                 key={ index }
                 >
-                    <div className="">{project.title}</div>
-                    <br />
-                    <div>{project.tags}</div>
+                    <div className="padding-top-15 padding-bottom-15">
+                        <div className="text-medium">{project.title}</div>
+                        <div className="text-small">{project.tags}</div>
+                    </div>
                     <hr />
                 </div>
             )}

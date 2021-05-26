@@ -1,8 +1,62 @@
 import React, { createContext, useEffect, useState } from "react";
 
+// API
+import ColorThief from "colorthief"
+
 export const LayoutContext = createContext();
 
 const LayoutContextProvider = (props) => {
+
+    // API
+    // https://lokeshdhakar.com/projects/color-thief/
+    const [ dominantColor, setDominantColor ] = useState([]);
+    const getDominantColor = () => {
+        let img = document.querySelector('#mainImage');
+        let rgbArray;
+        setDominantColor([]);
+        const colorThief = new ColorThief();
+        if (img.complete) { 
+            rgbArray = colorThief.getColor(img);
+            setDominantColor(rgbArray);
+        }
+        else {
+            img.addEventListener('load', function() {
+                rgbArray = colorThief.getColor(img);
+                setDominantColor(rgbArray);
+            }); 
+        }
+    };
+    // ------------
+
+    const [ mainImageContrast, setMainImageContrast ] = useState("");
+    const checkMainImageContrast = (checkContrast) => {
+        if (checkContrast) {
+            setMainImageContrast("");
+            let rgbaColor = [];
+            let canvas = document.getElementById("mainImageCanvas");
+            let ctx = canvas.getContext("2d");
+            let img = document.getElementById("mainImage");
+            let devicePixelRatio = window.devicePixelRatio;
+            if (!img.complete) {
+                img.onload = () => {
+    
+                    ctx.drawImage(img, 0, 0);
+                };
+                let imgData = ctx.getImageData(448 * devicePixelRatio, 190 * devicePixelRatio, 1, 1);
+                console.log("imgData: ", imgData);
+                console.log("imgData.data.slice(0, 3): ", imgData.data.slice(0, 3));
+                
+                rgbaColor = imgData.data.slice(0, 3);
+                console.log("rgbaColor: ", rgbaColor);
+                let yiq = ((rgbaColor[0] * 299) + (rgbaColor[1] * 587) + (rgbaColor[2] * 114)) / 1000;
+                console.log("yiq: ", yiq);
+                yiq >= 128 ? setMainImageContrast("black") : setMainImageContrast("white");
+            }
+        }
+        else {
+            setMainImageContrast("black");
+        };
+    };
 
     const breakpoint = {
         mobile: 480,
@@ -47,7 +101,6 @@ const LayoutContextProvider = (props) => {
 
     const [ imageSizeToUse, setImageSizeToUse] = useState(getWindowSize);
     const initialImagesToDisplayState = [];
-    
     const [ imagesToDisplay , setImagesToDisplay ] = useState(initialImagesToDisplayState);
     const [ imagesToDisplayReady , setImagesToDisplayReady ] = useState(false);
 
@@ -97,14 +150,16 @@ const LayoutContextProvider = (props) => {
         // states
         imageSizeToUse, 
         imagesToDisplay, 
-        imagesToDisplayReady, 
+        imagesToDisplayReady,
+        mainImageContrast,
 
         // functions
         getImagePath, 
         setImagesToDisplay, 
         setImagesToDisplayReady,
         resetImageToDisplay,
-        handleImageTemplates
+        handleImageTemplates,
+        checkMainImageContrast
         }}>
             {props.children}
         </LayoutContext.Provider>
