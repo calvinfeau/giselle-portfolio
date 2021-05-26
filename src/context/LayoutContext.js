@@ -37,20 +37,21 @@ const LayoutContextProvider = (props) => {
             let ctx = canvas.getContext("2d");
             let img = document.getElementById("mainImage");
             let devicePixelRatio = window.devicePixelRatio;
-            img.onload = () => {
-                ctx.drawImage(img, 0, 0);
-            };
-            console.log(448 * devicePixelRatio)
-            console.log(190 * devicePixelRatio) 
-            let imgData = ctx.getImageData(448 * devicePixelRatio, 190 * devicePixelRatio, 1, 1);
-            console.log("imgData: ", imgData);
-            console.log("imgData.data.slice(0, 3): ", imgData.data.slice(0, 3));
-            
-            rgbaColor = imgData.data.slice(0, 3);
-            console.log("rgbaColor: ", rgbaColor);
-            let yiq = ((rgbaColor[0] * 299) + (rgbaColor[1] * 587) + (rgbaColor[2] * 114)) / 1000;
-            console.log("yiq: ", yiq);
-            yiq >= 128 ? setMainImageContrast("black") : setMainImageContrast("white");
+            if (!img.complete) {
+                img.onload = () => {
+    
+                    ctx.drawImage(img, 0, 0);
+                };
+                let imgData = ctx.getImageData(448 * devicePixelRatio, 190 * devicePixelRatio, 1, 1);
+                console.log("imgData: ", imgData);
+                console.log("imgData.data.slice(0, 3): ", imgData.data.slice(0, 3));
+                
+                rgbaColor = imgData.data.slice(0, 3);
+                console.log("rgbaColor: ", rgbaColor);
+                let yiq = ((rgbaColor[0] * 299) + (rgbaColor[1] * 587) + (rgbaColor[2] * 114)) / 1000;
+                console.log("yiq: ", yiq);
+                yiq >= 128 ? setMainImageContrast("black") : setMainImageContrast("white");
+            }
         }
         else {
             setMainImageContrast("black");

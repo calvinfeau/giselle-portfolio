@@ -13,7 +13,7 @@ const ProjectMenu = () => {
 
     const handleMouseEnter = (index) => {
         handleSelectedProject(index);
-        checkMainImageContrast(false); //reset to black between image hover selection -- needs an update
+        checkMainImageContrast(true);
     };
 
     return (
