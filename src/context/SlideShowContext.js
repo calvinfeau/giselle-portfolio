@@ -1,5 +1,5 @@
 import React, { createContext, useState } from "react";
-import { db } from "../firebase/Config";
+import { db } from "../firebase/config";
 
 export const SlideShowContext = createContext();
 

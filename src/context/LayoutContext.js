@@ -1,7 +1,7 @@
 import React, { createContext, useEffect, useState } from "react";
 
 // API
-import ColorThief from "colorthief"
+import ColorThief from "colorthief";
 
 export const LayoutContext = createContext();
 
