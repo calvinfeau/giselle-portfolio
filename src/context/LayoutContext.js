@@ -28,7 +28,9 @@ const LayoutContextProvider = (props) => {
     };
     // ------------
 
-    const [ mainImageContrast, setMainImageContrast ] = useState("");
+
+    // Not working well -- needs improvements
+    const [ mainImageContrast, setMainImageContrast ] = useState("black");
     const checkMainImageContrast = (checkContrast) => {
         if (checkContrast) {
             setMainImageContrast("");
@@ -51,6 +53,7 @@ const LayoutContextProvider = (props) => {
                 let yiq = ((rgbaColor[0] * 299) + (rgbaColor[1] * 587) + (rgbaColor[2] * 114)) / 1000;
                 console.log("yiq: ", yiq);
                 yiq >= 128 ? setMainImageContrast("black") : setMainImageContrast("white");
+                console.log("mainImageContrast: ", mainImageContrast)
             }
         }
         else {
