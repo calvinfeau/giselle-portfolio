@@ -27,31 +27,75 @@ const LayoutContextProvider = (props) => {
         }
     };
     // ------------
-
+    
     const [ mainImageContrast, setMainImageContrast ] = useState("");
+
+    const checkIfImageExist = (url, callback) => {
+        const img = new Image();
+        img.src = url;
+        if (img.complete) {
+            callback(true, img);
+        }
+        else {
+            img.onload = () => {
+                callback(true, img);
+            };
+            img.onerror = () => {
+                callback(false);
+            };
+        };
+    };
+
+    const changeContrast = (imageExist, img) => {
+        let rgbaColor = [];
+        let canvas = document.getElementById("mainImageCanvas");
+        let ctx = canvas.getContext("2d");
+        // let img = document.getElementById("mainImage");
+
+        if (imageExist) {
+            console.log("image complete");
+
+            ctx.drawImage(img, 0, 0);
+            let imgData = ctx.getImageData(448 * devicePixelRatio, 90 * devicePixelRatio, 1, 1);
+            rgbaColor = imgData.data.slice(0, 3);
+
+            console.log("rgbaColor: ", rgbaColor);
+
+            let yiq = ((rgbaColor[0] * 299) + (rgbaColor[1] * 587) + (rgbaColor[2] * 114)) / 1000;
+            yiq >= 128 ? setMainImageContrast("black") : setMainImageContrast("white");
+        }
+        else {
+            console.log("image NOT complete")
+            setMainImageContrast("black");
+        };
+    };
+
     const checkMainImageContrast = (checkContrast) => {
         if (checkContrast) {
-            setMainImageContrast("");
-            let rgbaColor = [];
-            let canvas = document.getElementById("mainImageCanvas");
-            let ctx = canvas.getContext("2d");
+            // setMainImageContrast("");
+
+            // let rgbaColor = [];
+            // let canvas = document.getElementById("mainImageCanvas");
+            // let ctx = canvas.getContext("2d");
             let img = document.getElementById("mainImage");
-            let devicePixelRatio = window.devicePixelRatio;
-            if (!img.complete) {
-                img.onload = () => {
-    
-                    ctx.drawImage(img, 0, 0);
-                };
-                let imgData = ctx.getImageData(448 * devicePixelRatio, 190 * devicePixelRatio, 1, 1);
-                console.log("imgData: ", imgData);
-                console.log("imgData.data.slice(0, 3): ", imgData.data.slice(0, 3));
-                
-                rgbaColor = imgData.data.slice(0, 3);
-                console.log("rgbaColor: ", rgbaColor);
-                let yiq = ((rgbaColor[0] * 299) + (rgbaColor[1] * 587) + (rgbaColor[2] * 114)) / 1000;
-                console.log("yiq: ", yiq);
-                yiq >= 128 ? setMainImageContrast("black") : setMainImageContrast("white");
-            }
+            // let devicePixelRatio = window.devicePixelRatio;
+            
+            checkIfImageExist(img.src, changeContrast);
+            // if (!img.complete) {
+            //     console.log("image complete")
+            //     img.onload = () => {
+            //         ctx.drawImage(img, 0, 0);
+            //     };
+            //     let imgData = ctx.getImageData(448 * devicePixelRatio, 90 * devicePixelRatio, 1, 1);
+            //     rgbaColor = imgData.data.slice(0, 3);
+            //     console.log("rgbaColor: ", rgbaColor);
+            //     let yiq = ((rgbaColor[0] * 299) + (rgbaColor[1] * 587) + (rgbaColor[2] * 114)) / 1000;
+            //     yiq >= 128 ? setMainImageContrast("black") : setMainImageContrast("white");
+            // }
+            // else {
+            //     console.log("image NOT complete")
+            //     setMainImageContrast("black");
+            // }
         }
         else {
             setMainImageContrast("black");

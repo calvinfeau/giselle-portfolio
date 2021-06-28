@@ -1,17 +1,26 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { ProjectContext } from "../context/ProjectContext";
 import { LayoutContext } from "../context/LayoutContext";
 
 const NavBar = () => {
     const { resetSelectedProject } = useContext(ProjectContext);
     const { resetImageToDisplay, mainImageContrast, checkMainImageContrast } = useContext(LayoutContext);
-
+    const location = useLocation();
+    
     const handleClick = () => {
         resetImageToDisplay();
         resetSelectedProject();
-        checkMainImageContrast(false);
+        // checkMainImageContrast(false);
     };
+
+    const handleWorkClick = () => {
+        resetImageToDisplay();
+        resetSelectedProject();
+        // if (location.pathname !== "/projects") {
+        //     checkMainImageContrast(false);
+        // }
+    }
 
     return ( 
         <div className="flex justify-center navbar">
@@ -22,8 +31,8 @@ const NavBar = () => {
                 onClick={ () => handleClick() } 
                 >Giselle Hernandez</Link>
                 <div className="col-end-12 flex text-small"> 
-                    <Link style={{color: `${mainImageContrast}`}} onClick={ () => handleClick() } to="/projects">Work</Link>
-                    <Link style={{color: `${mainImageContrast}`}} onClick={ () => handleClick() } to="/about">About</Link>
+                    <Link onClick={ () => handleWorkClick() } to="/projects">Work</Link>
+                    <Link onClick={ () => handleClick() } to="/about">About</Link>
                 </div>
             </div>
         </div>
