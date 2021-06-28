@@ -13,7 +13,7 @@ const ProjectMenu = () => {
 
     const handleMouseEnter = (index) => {
         handleSelectedProject(index);
-        // checkMainImageContrast(true);
+        checkMainImageContrast(true);
     };
 
     return (
