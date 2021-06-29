@@ -6,7 +6,7 @@ import ImageTemplatesLoader from "./ImageTemplatesLoader";
 
 const ProjectDetails = () => {
     return (
-        <div>
+        <div className="extra-margin-top">
             <TextDetails />
             <ImageTemplatesLoader />
             <div>

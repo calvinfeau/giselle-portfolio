@@ -1,6 +1,7 @@
 @import "./media";
 
 $background-color: #fffffb;
+$project-background-color: #F3F0E9;
 $text-grey: rgba(0,0,0, 0.4);
 
 @font-face {
@@ -63,4 +64,7 @@ a {
 }
 .border-bottom {
     border-bottom: 1px solid black;
+}
+.background-color-2 {
+    background-color: $project-background-color;
 }

@@ -6,7 +6,7 @@ import ProjectMenu from "../components/ProjectMenu";
 import MainImage from "../components/MainImage";
 import { ProjectContext } from "../context/ProjectContext";
 
-const WorkPage = () => {
+const ProjectPage = () => {
     const { projectsLoading, isProjectSelected } = useContext(ProjectContext);
     console.log("projectsLoading: ", projectsLoading)
     console.log("isProjectSelected: ", isProjectSelected)
@@ -16,12 +16,14 @@ const WorkPage = () => {
     };
     
     return (
-        <div className="flex justify-center full-height">
-                {isProjectSelected ? <ProjectIntro /> : <ProjectMenu />}
-                <MainImage />
-            {isProjectSelected ? <ProjectDetails /> : ''}
+        <div>
+            <div className="flex justify-center full-height">
+                    {isProjectSelected ? <ProjectIntro /> : <ProjectMenu />}
+                    <MainImage />
+            </div>
+                {isProjectSelected ? <ProjectDetails /> : ''}
         </div>
     );
 };
 
-export default WorkPage;
+export default ProjectPage;

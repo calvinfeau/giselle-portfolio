@@ -27,12 +27,12 @@ const ImageTemplatesLoader = () => {
     };
 
     return (
-        <>
+        <div className="extra-margin-top">
             { imagesToDisplay.map(imageSection => {
                 const TemplateName = imageTemplateList[`ImageTemplate${imageSection.templateNumber}`];
                 return <TemplateName images={imageSection.images} />
             })}
-        </>
+        </div>
     );
 };
 

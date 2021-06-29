@@ -13,14 +13,16 @@ const ProjectMenu = () => {
 
     const handleMouseEnter = (index) => {
         handleSelectedProject(index);
-        checkMainImageContrast(true);
+        // checkMainImageContrast(true);
     };
 
     return (
-        <div className="margin-top flex flex-column align-end justify-end" style={{width: "calc(50vw - 50px)", marginBottom: "50px", paddingRight: "50px"}}>
+        <div className="margin-top half-width flex flex-column align-end justify-end" style={{marginBottom: "50px"}}>
+        {/* <div className="margin-top flex flex-column align-end justify-end" style={{width: "calc(50vw - 50px)", marginBottom: "50px", paddingRight: "50px"}}> */}
             {projects.map((project, index) => 
                 <div 
-                className="half-width-ratio-included-test"
+                style={{width: "calc(100% - 100px)", paddingRight: "50px"}}
+                className="half-width-ratio-included-test"  
                 onMouseEnter={ () => handleMouseEnter(index) }
                 onClick={ () => handleClick() }
                 key={ index }

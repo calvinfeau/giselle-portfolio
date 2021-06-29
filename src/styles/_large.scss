@@ -65,6 +65,9 @@
     .margin-top {
         margin-top: 90px;
     }
+    .padding-top {
+        padding-top: 90px;
+    }
     .extra-margin-top {
         margin-top: 150px;
     }
@@ -83,14 +86,9 @@
     .padding-bottom-15 {
         padding-bottom: 15px;
     }
-
     .navbar {
         height: 90px;
         background-color: transparent;
-
-        & div > div > a:last-child {
-            margin-left: 30px;
-        };
     }
     .carousel-text {
         height: 110px;

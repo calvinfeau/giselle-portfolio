@@ -12,14 +12,14 @@ const whiteRightIcon = "/assets/icons/carousel-arrow-white-right.png";
 
 /* https://www.react-reveal.com/tutorials/carousel/ */
 const Container = styled.div`
-position:                       relative;
+position: relative;
 `;
 const Arrows = styled.div`
-position:                       absolute;
+position: absolute;
 `;
 const Arrow = styled.div`
-z-index:                        100;
-user-select:                    none;
+z-index: 100;
+user-select: none;
 ${props => props.right ? css`left: 90%;` : css`left: 0%;`}
 ${props => props.side === "left" ? css`cursor: url(${window.location.origin + blackLeftIcon}), auto;` : css`cursor: url(${window.location.origin + blackRightIcon}), auto;`}
 `;
@@ -43,11 +43,11 @@ const Carousel = makeCarousel(CarouselUI);
 /* -------------------------------------------------- */
 
 const Img = styled.img`
-position:                       relative;
-max-width:                      100%;
-max-height:                     100%;
-height:                         auto;
-width:                          auto;
+position: relative;
+max-width: 100%;
+max-height: 100%;
+height: auto;
+width: auto;
 `;
 
 const ProjectCarousel = () => {

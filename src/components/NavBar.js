@@ -24,15 +24,18 @@ const NavBar = () => {
 
     return ( 
         <div className="flex justify-center navbar">
-            <div className="full-width max-width grid row-1 align-center">
-                <Link 
-                to="/"
-                className="text-large col-start-1"
-                onClick={ () => handleClick() } 
-                >Giselle Hernandez</Link>
+            {/* <div className="full-width max-width grid row-1 align-center"> */}
+            <div className="full-width grid row-1 align-center" style={{margin: "0 50px"}}>
+                <div className="col-start-1">
+                    <Link 
+                    to="/"
+                    className="text-large"
+                    onClick={ () => handleClick() } 
+                    >Giselle Hernandez</Link>
+                </div>
                 <div className="col-end-12 flex text-small"> 
-                    <Link onClick={ () => handleWorkClick() } to="/projects">Work</Link>
-                    <Link onClick={ () => handleClick() } to="/about">About</Link>
+                    <Link style={{color: "black"}} onClick={ () => handleWorkClick() } to="/projects">Work</Link>
+                    <Link style={{color: "black", marginLeft: "30px"}} onClick={ () => handleClick() } to="/about">About</Link>
                 </div>
             </div>
         </div>
