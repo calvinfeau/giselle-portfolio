@@ -2,16 +2,13 @@ import React, { useContext } from "react";
 import styled from "styled-components";
 import { ProjectContext } from "../context/ProjectContext";
 
-const Titles = styled.div`
-width: 20%;
+const LastSubtitle = styled.div`
+width: 50%;
 `;
-const Description = styled.div`
-width: 60%;
-`;
-const Subtitle = styled.div`
+const Subtitle = styled(LastSubtitle)`
 margin-bottom: 30px;
 `;
-const Text2 = styled.div`
+const Text = styled.div`
 margin-top: 10px;
 `;
 
@@ -19,29 +16,29 @@ const TextDetails = () => {
     const { selectedProject } = useContext(ProjectContext);
 
     return ( 
-        <div className="flex space-around s-margin">
-            <Titles>
+        <div className="flex">
+            <div className="flex flex-column" style={{width: "calc(50vw - 200px)", marginLeft: "200px"}}>
                 <Subtitle className="flex flex-column">
                     <div className="text-large">Role</div>
-                    <Text2>{ selectedProject.role }</Text2>
+                    <Text>{ selectedProject.role }</Text>
                 </Subtitle>
                 {selectedProject.agency ? 
                     <Subtitle className="flex flex-column">
                         <div className="text-large">Agency</div>
-                        <Text2>{ selectedProject.agency }</Text2>
+                        <Text>{ selectedProject.agency }</Text>
                     </Subtitle>
                     : ''
                 }
-                <div className="flex flex-column">
+                <LastSubtitle className="flex flex-column">
                     <div className="text-large">Year</div>
-                    <Text2>{ selectedProject.year }</Text2>
-                </div>
-            </Titles>
-            <Description>
-                <div className="text-large">
+                    <Text>{ selectedProject.year }</Text>
+                </LastSubtitle>
+            </div>
+            <div style={{width: "calc(50vw - 200px)", marginRight: "200px"}}>
+                <div className="text-large" style={{marginRight: "50px"}}>
                     { selectedProject.description }
                 </div>
-            </Description>
+            </div>
         </div>
     );
 };

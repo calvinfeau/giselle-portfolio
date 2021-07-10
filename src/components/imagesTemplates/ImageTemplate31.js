@@ -1,25 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 
-const Img1 = styled.img`
-height:                                 auto;
-width:                                  auto;
-max-height:                             50vh;
-max-width:                              35%;
-`;
-const Img2 = styled.img`
-height:                                 auto;
-width:                                  auto;
-min-height:                             70vh;
-max-width:                              64%;
+const Img = styled.img`
+height: auto;
+width: auto;
+max-width: calc((100% - 100px) / 3);
 `;
 
 const ImageTemplate31 = (props) => {
     return ( 
-        <div className="flex space-between s-margin s-height">
-            <Img1 src={ window.location.origin + props.images[0] } />
-            <Img2 src={ window.location.origin + props.images[1] } />
-            <Img2 src={ window.location.origin + props.images[2] } />
+        <div className="flex space-between" style={{width: "calc(100vw - 100px", margin: "200px auto 0"}}>
+            <Img src={ window.location.origin + props.images[0] } />
+            <Img src={ window.location.origin + props.images[1] } />
+            <Img src={ window.location.origin + props.images[2] } />
         </div>
     );
 };

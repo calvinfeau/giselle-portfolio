@@ -2,23 +2,25 @@ import React from "react";
 import styled from "styled-components";
 
 const Img1 = styled.img`
-height:                                 auto;
-width:                                  auto;
-min-height:                             70vh;
-max-width:                              64%;
+height: auto;
+width: calc(40%);
+padding-right: 100px
 `;
+
 const Img2 = styled.img`
-height:                                 auto;
-width:                                  auto;
-max-height:                             50vh;
-max-width:                              35%;
+height: auto;
+width: calc(50%);
 `;
 
 const ImageTemplate22 = (props) => {
     return ( 
-        <div className="flex space-between s-margin s-height">
-            <Img1 src={ window.location.origin + props.images[0] } />
-            <Img2 src={ window.location.origin + props.images[1] } />
+        <div className="flex justify-center align-center" style={{width: "calc(100vw - 400px)", margin: "200px auto 0"}}>
+            {/* <div> */}
+                <Img1 src={ window.location.origin + props.images[0] } />
+            {/* </div>
+            <div> */}
+                <Img2 src={ window.location.origin + props.images[1] } />
+            {/* </div> */}
         </div>
     );
 };

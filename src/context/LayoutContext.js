@@ -28,6 +28,7 @@ const LayoutContextProvider = (props) => {
     };
     // ------------
     
+    // Tried Dynamic Navbar Menu Color
     const [ mainImageContrast, setMainImageContrast ] = useState("");
 
     const checkIfImageExist = (url, callback) => {
@@ -101,6 +102,7 @@ const LayoutContextProvider = (props) => {
             setMainImageContrast("black");
         };
     };
+    // ------------
 
     const breakpoint = {
         mobile: 480,
@@ -143,11 +145,6 @@ const LayoutContextProvider = (props) => {
         return type === "slideshow" ? slideShowImagePath : projectImagePath;
     };
 
-    const [ imageSizeToUse, setImageSizeToUse] = useState(getWindowSize);
-    const initialImagesToDisplayState = [];
-    const [ imagesToDisplay , setImagesToDisplay ] = useState(initialImagesToDisplayState);
-    const [ imagesToDisplayReady , setImagesToDisplayReady ] = useState(false);
-
     const handleImageTemplates = (project) => {
         setImagesToDisplay(initialImagesToDisplayState);
         setImagesToDisplayReady(false);
@@ -182,7 +179,12 @@ const LayoutContextProvider = (props) => {
     const resetImageToDisplay = () => {
         setImagesToDisplayReady(false);
         setImagesToDisplay(initialImagesToDisplayState)
-    }
+    };
+
+    const [ imageSizeToUse, setImageSizeToUse] = useState(getWindowSize);
+    const initialImagesToDisplayState = [];
+    const [ imagesToDisplay , setImagesToDisplay ] = useState(initialImagesToDisplayState);
+    const [ imagesToDisplayReady , setImagesToDisplayReady ] = useState(false);
 
     useEffect(() => {
         window.addEventListener("resize", handleResize);

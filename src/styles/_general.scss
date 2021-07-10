@@ -3,6 +3,7 @@
 $background-color: #fffffb;
 $project-background-color: #F3F0E9;
 $text-grey: rgba(0,0,0, 0.4);
+$text-select-color: #CAD1FA;
 
 @font-face {
     font-family: "GT America Trial";
@@ -16,6 +17,7 @@ $text-grey: rgba(0,0,0, 0.4);
 body {  
     margin: 0;
     line-height: 1.3;
+    background-color: $background-color;
     
     // default font
     font-family: "GT America Trial", -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
@@ -29,6 +31,9 @@ a {
         color: $text-grey;
     }
 }
+::selection {
+    background: $text-select-color;
+};
 
 .font-circular {
     font-family: "Circular";

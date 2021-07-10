@@ -3,6 +3,7 @@ import Loading from "./Loading";
 import ImageTemplate11 from "./imagesTemplates/ImageTemplate11";
 import ImageTemplate21 from "./imagesTemplates/ImageTemplate21";
 import ImageTemplate22 from "./imagesTemplates/ImageTemplate22";
+import ImageTemplate23 from "./imagesTemplates/ImageTemplate23";
 import ImageTemplate31 from "./imagesTemplates/ImageTemplate31";
 import { LayoutContext } from "../context/LayoutContext";
 import { ProjectContext } from "../context/ProjectContext";
@@ -11,6 +12,7 @@ const imageTemplateList = {
     ImageTemplate11,
     ImageTemplate21,
     ImageTemplate22,
+    ImageTemplate23,
     ImageTemplate31
 };
 
@@ -27,7 +29,7 @@ const ImageTemplatesLoader = () => {
     };
 
     return (
-        <div className="extra-margin-top">
+        <div>
             { imagesToDisplay.map(imageSection => {
                 const TemplateName = imageTemplateList[`ImageTemplate${imageSection.templateNumber}`];
                 return <TemplateName images={imageSection.images} />

@@ -3,18 +3,18 @@ import styled from "styled-components";
 
 const Img1 = styled.img`
 height: auto;
-width: calc(50vw - 100px);
+width: 20vw;
 `;
 
 const Img2 = styled.img`
 height: auto;
-width: calc(50vw - 200px);
+width: calc(50vw - 150px);
 `;
 
-const ImageTemplate21 = (props) => {
+const ImageTemplate23 = (props) => {
     return ( 
-        <div className="flex space-between align-center" style={{width: "calc(100vw - 200px)", margin: "200px auto 0"}}>
-            <div>
+        <div className="flex align-end" style={{width: "calc(100vw - 200px)", margin: "200px auto 0"}}>
+            <div style={{margin: "0 50px 0 auto"}}>
                 <Img1 src={ window.location.origin + props.images[0] } />
             </div>
             <div>
@@ -24,4 +24,4 @@ const ImageTemplate21 = (props) => {
     );
 };
  
-export default ImageTemplate21;
+export default ImageTemplate23;

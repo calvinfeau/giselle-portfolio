@@ -13,7 +13,7 @@ const CarouselPage = () => {
     }
 
     return (
-        <div className="flex flex-column align-center margin-top"> 
+        <div className="flex flex-column align-center margin-top-90"> 
             <ProjectCarousel />
             <TextCarousel /> 
         </div>
