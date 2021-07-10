@@ -1,6 +1,63 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
-import { ProjectContext } from "../context/ProjectContext";
+
+const bioProjectsList = [
+    {
+        year: "2019 - 2020",
+        agency: "Apple",
+        role: "Senior Art Director"
+    },
+    {
+        year: "2013 - 2018",
+        agency: "Someware",
+        role: "Founder & Creative Director"
+    },
+    {
+        year: "2018",
+        agency: "Hello Design",
+        role: "Freelance Creative Director"
+    },
+    {
+        year: "2018",
+        agency: "Vejo Inc.",
+        role: "Freelance Art Director"
+    },
+    {
+        year: "2016 -2017",
+        agency: "Huge Inc.",
+        role: "Freelance Art Director"
+    },
+    {
+        year: "2013 - 2016",
+        agency: "See's Candies",
+        role: "Freelance Art Director"
+    },
+    {
+        year: "2012 - 2013",
+        agency: "Critical Mass",
+        role: "Senior Interactive Designer"
+    },
+    {
+        year: "2010 - 2012",
+        agency: "Sapient Nitro",
+        role: "Senior Interactive Designer"
+    },
+    {
+        year: "2008 - 2010",
+        agency: "The Groop & Amauta Lab",
+        role: "Freelance Interactive Designer"
+    },
+    {
+        year: "2007 - 2008",
+        agency: "Schematic",
+        role: "Junior Designer"
+    },
+    {
+        year: "2007",
+        agency: "University of Hawaii",
+        role: "BFA in Graphic Design"
+    }
+];
 
 const QuarterWidth = styled.div`
 width:            25%;
@@ -10,7 +67,6 @@ width:            75%;
 `;
 
 const AboutPage = () => {
-    const {projects} = useContext(ProjectContext);
     return ( 
         <div className="extra-margin-top flex flex-column align-center full-width text-large">
             <div className="flex space-between border-top full-width max-width padding-top-50 padding-bottom-150">
@@ -23,18 +79,18 @@ const AboutPage = () => {
                     <br />
                     <br />
                     <br />
-                    {projects.map((project, index) =>
+                    {bioProjectsList.map((project, index) =>
                         <div className="flex border-bottom padding-top-15 padding-bottom-15" key={index}>
                             <QuarterWidth>{project.year}</QuarterWidth>
                             <ThreeQuarterWidth>
-                                {project.agency ? <span>{project.agency}</span> : <span>{project.title}</span>}, {project.role}
+                                {project.agency}, {project.role}
                             </ThreeQuarterWidth>
                         </div>
                     )}
 
                 </ThreeQuarterWidth>
             </div>
-            <div className="flex space-between border-top full-width max-width padding-top-50 padding-bottom-100">
+            <div className="flex space-between border-top full-width max-width padding-top-50 padding-bottom-150">
                 <QuarterWidth className="padding-top-bottom-50 text-xl font-circular">Contact</QuarterWidth>
                 <ThreeQuarterWidth>
                     For current work and design inquiries email 
@@ -45,13 +101,13 @@ const AboutPage = () => {
                     <br />
                     <a href="https://www.linkedin.com/in/gisellehndz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                     <br />
-                    <a href="" target="_blank" rel="noopener noreferrer">Instagram</a>
+                    <a href="https://www.instagram.com/pechecreme/" target="_blank" rel="noopener noreferrer">Instagram</a>
                     <br />
-                    <a href="" target="_blank" rel="noopener noreferrer">Behance</a>
+                    <a href="https://www.behance.net/giselleh25c0b8" target="_blank" rel="noopener noreferrer">Behance</a>
                 </ThreeQuarterWidth>
             </div>
-            <div className="flex space-between border-top full-width max-width padding-top-15 padding-bottom-100">
-            <div className="text-small">© Giselle Hernandez, 2021</div>
+            <div className="flex space-between border-top full-width max-width padding-top-15 padding-bottom-150">
+                <div className="text-small">© Giselle Hernandez, 2021</div>
             </div>
         </div>
     );
