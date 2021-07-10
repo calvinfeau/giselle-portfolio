@@ -10,7 +10,6 @@ const SlideShowContextProvider = (props) => {
     const [ slidesPagination, setSlidesPagination ] = useState(0);
 
     const getSlideShow = () => {
-        console.log("hit")
         db.collection("slideshow").get().then(slides => {
             let slidesToAdd = [];
             slides.forEach(slide =>  slidesToAdd.push(slide.data()));
@@ -20,7 +19,13 @@ const SlideShowContextProvider = (props) => {
     };
 
     return (
-        <SlideShowContext.Provider value={{ slidesLoading, slideShow, slidesPagination, setSlidesPagination, getSlideShow }}>
+        <SlideShowContext.Provider value={{ 
+        slidesLoading, 
+        slideShow, 
+        slidesPagination, 
+        setSlidesPagination, 
+        getSlideShow 
+        }}>
             {props.children}
         </SlideShowContext.Provider>
     );

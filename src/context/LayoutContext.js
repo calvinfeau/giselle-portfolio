@@ -1,108 +1,8 @@
 import React, { createContext, useEffect, useState } from "react";
 
-// API
-import ColorThief from "colorthief"
-
 export const LayoutContext = createContext();
 
 const LayoutContextProvider = (props) => {
-
-    // API
-    // https://lokeshdhakar.com/projects/color-thief/
-    const [ dominantColor, setDominantColor ] = useState([]);
-    const getDominantColor = () => {
-        let img = document.querySelector('#mainImage');
-        let rgbArray;
-        setDominantColor([]);
-        const colorThief = new ColorThief();
-        if (img.complete) { 
-            rgbArray = colorThief.getColor(img);
-            setDominantColor(rgbArray);
-        }
-        else {
-            img.addEventListener('load', function() {
-                rgbArray = colorThief.getColor(img);
-                setDominantColor(rgbArray);
-            }); 
-        }
-    };
-    // ------------
-    
-    // Tried Dynamic Navbar Menu Color
-    const [ mainImageContrast, setMainImageContrast ] = useState("");
-
-    const checkIfImageExist = (url, callback) => {
-        const img = new Image();
-        img.src = url;
-        if (img.complete) {
-            callback(true, img);
-        }
-        else {
-            img.onload = () => {
-                callback(true, img);
-            };
-            img.onerror = () => {
-                callback(false);
-            };
-        };
-    };
-
-    const changeContrast = (imageExist, img) => {
-        let rgbaColor = [];
-        let canvas = document.getElementById("mainImageCanvas");
-        let ctx = canvas.getContext("2d");
-        // let img = document.getElementById("mainImage");
-
-        if (imageExist) {
-            console.log("image complete");
-
-            ctx.drawImage(img, 0, 0);
-            let imgData = ctx.getImageData(448 * devicePixelRatio, 90 * devicePixelRatio, 1, 1);
-            rgbaColor = imgData.data.slice(0, 3);
-
-            console.log("rgbaColor: ", rgbaColor);
-
-            let yiq = ((rgbaColor[0] * 299) + (rgbaColor[1] * 587) + (rgbaColor[2] * 114)) / 1000;
-            yiq >= 128 ? setMainImageContrast("black") : setMainImageContrast("white");
-        }
-        else {
-            console.log("image NOT complete")
-            setMainImageContrast("black");
-        };
-    };
-
-    const checkMainImageContrast = (checkContrast) => {
-        if (checkContrast) {
-            // setMainImageContrast("");
-
-            // let rgbaColor = [];
-            // let canvas = document.getElementById("mainImageCanvas");
-            // let ctx = canvas.getContext("2d");
-            let img = document.getElementById("mainImage");
-            // let devicePixelRatio = window.devicePixelRatio;
-            
-            checkIfImageExist(img.src, changeContrast);
-            // if (!img.complete) {
-            //     console.log("image complete")
-            //     img.onload = () => {
-            //         ctx.drawImage(img, 0, 0);
-            //     };
-            //     let imgData = ctx.getImageData(448 * devicePixelRatio, 90 * devicePixelRatio, 1, 1);
-            //     rgbaColor = imgData.data.slice(0, 3);
-            //     console.log("rgbaColor: ", rgbaColor);
-            //     let yiq = ((rgbaColor[0] * 299) + (rgbaColor[1] * 587) + (rgbaColor[2] * 114)) / 1000;
-            //     yiq >= 128 ? setMainImageContrast("black") : setMainImageContrast("white");
-            // }
-            // else {
-            //     console.log("image NOT complete")
-            //     setMainImageContrast("black");
-            // }
-        }
-        else {
-            setMainImageContrast("black");
-        };
-    };
-    // ------------
 
     const breakpoint = {
         mobile: 480,
@@ -116,19 +16,19 @@ const LayoutContextProvider = (props) => {
         console.log("window.innerWidth >= breakpoint.mobile && window.innerWidth < breakpoint.tablet: ", window.innerWidth >= breakpoint.mobile && window.innerWidth < breakpoint.tablet)
         switch (true) {
             case window.innerWidth < breakpoint.mobile: 
-                console.log("case 1 hit");
+                // console.log("case 1 hit")
                 windowSize = "small"
                 break;
             case window.innerWidth >= breakpoint.mobile && window.innerWidth < breakpoint.tablet:
-                console.log("case 2 hit")
+                // console.log("case 2 hit")
                 windowSize = "medium"
                 break;
             case window.innerWidth >= breakpoint.tablet && window.innerWidth < breakpoint.laptop:
-                console.log("case 3 hit")
+                // console.log("case 3 hit")
                 windowSize = "large"
                 break;
             default:
-                console.log("case 4 hit")
+                // console.log("case 4 hit")
                 windowSize = "large"
         };
         return windowSize;
@@ -197,15 +97,13 @@ const LayoutContextProvider = (props) => {
         imageSizeToUse, 
         imagesToDisplay, 
         imagesToDisplayReady,
-        mainImageContrast,
 
         // functions
         getImagePath, 
         setImagesToDisplay, 
         setImagesToDisplayReady,
         resetImageToDisplay,
-        handleImageTemplates,
-        checkMainImageContrast
+        handleImageTemplates
         }}>
             {props.children}
         </LayoutContext.Provider>

@@ -7,7 +7,6 @@ const TextCarousel = () => {
     return (
         <div className="full-width max-width">
             <div className="carousel-text grid row-1 align-center">
-            {/* <div className="full-width max-width carousel-text grid row-1 align-center"> */}
                 <div className="col-start-1">
                     <span className="text-medium">{ slideShow[slidesPagination].projectName }</span>
                     <br />

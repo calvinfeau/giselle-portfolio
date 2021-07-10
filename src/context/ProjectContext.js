@@ -9,6 +9,7 @@ const ProjectContextProvider = (props) => {
     const [ projects, setProjects ] = useState([]);
 
     const [ isProjectSelected, setIsProjectSelected ] = useState(false);
+    const [ isProjectHovered, setIsProjectHovered ] = useState(false);
     const [ selectedProject, setSelectedProject ] = useState({});
     const [ selectedProjectIndex, setSelectedProjectIndex ] = useState(0);
 
@@ -31,6 +32,7 @@ const ProjectContextProvider = (props) => {
     const resetSelectedProject = () => {
         setSelectedProject(projects[0]);
         setIsProjectSelected(false);
+        setIsProjectHovered(true);
     };
 
     return (
@@ -39,12 +41,14 @@ const ProjectContextProvider = (props) => {
         projects,
         projectsLoading,
         isProjectSelected,
+        isProjectHovered,
         selectedProject,
         selectedProjectIndex,
 
         // functions
         getProjects,
         setIsProjectSelected,
+        setIsProjectHovered,
         setSelectedProject,
         handleSelectedProject,
         resetSelectedProject

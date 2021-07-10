@@ -7,8 +7,6 @@ import { LayoutContext } from "../context/LayoutContext";
 
 const blackLeftIcon = "/assets/icons/carousel-arrow-black-left.png";
 const blackRightIcon = "/assets/icons/carousel-arrow-black-right.png";
-const whiteLeftIcon = "/assets/icons/carousel-arrow-white-left.png";
-const whiteRightIcon = "/assets/icons/carousel-arrow-white-right.png";
 
 /* https://www.react-reveal.com/tutorials/carousel/ */
 const Container = styled.div`
@@ -59,7 +57,6 @@ const ProjectCarousel = () => {
             <Carousel defaultWait={100000}>
                 { slideShow.map((slide, index) => (
                     <Slide key={ index } right>
-                        {/* <Img src={ `${ slide.images[imageSizeToUse] }` } alt={ `${ slide.projectName } image` }/> */}
                         <Img src={ window.location.origin + getImagePath(slide.projectName, index+1, "slideshow") } alt={ `${ slide.projectName } image` }/>
                     </Slide> 
                 ))}

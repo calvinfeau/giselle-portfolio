@@ -6,7 +6,6 @@ import { SlideShowContext } from "../context/SlideShowContext";
 
 const CarouselPage = () => {  
     const { slidesLoading } = useContext(SlideShowContext);
-    console.log("slidesLoading: ", slidesLoading)
 
     if (slidesLoading) {
         return <Loading />
