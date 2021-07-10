@@ -10,7 +10,7 @@ const ProjectContextProvider = (props) => {
 
     const [ isProjectSelected, setIsProjectSelected ] = useState(false);
     const [ isProjectHovered, setIsProjectHovered ] = useState(false);
-    const [ selectedProject, setSelectedProject ] = useState({});
+    const [ selectedProject, setSelectedProject ] = useState();
     const [ selectedProjectIndex, setSelectedProjectIndex ] = useState(0);
 
     const getProjects = () => {
